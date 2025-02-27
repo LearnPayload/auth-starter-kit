@@ -1,59 +1,23 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
+import Image from "next/image";
 
-import config from '@/payload.config'
-import './styles.css'
-
+import "./styles.css";
+import darkLogo from "@/public/logo-dark.svg";
 export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
-        </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
-      </div>
+    <div className="dark bg-[#212828] bg-linear-to-r from-[#212828] via-[#272f2f] to-[#212828] text-text h-screen flex gap-2 items-center justify-center">
+      <Image
+        src={darkLogo}
+        alt="Logo"
+        className="hidden shrink-0 dark:flex h-24 w-24"
+        width={120}
+        height={120}
+      />
+      <h1 className="text-6xl font-bold tracking-tight text-white">
+        Payload{" "}
+        <span className="inline bg-linear-to-r from-accent via-[#49b288] to-accent bg-clip-text text-transparent">
+          AuthKit
+        </span>
+      </h1>
     </div>
-  )
+  );
 }
