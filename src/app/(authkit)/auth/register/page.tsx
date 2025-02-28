@@ -7,20 +7,13 @@ import route from "@/lib/route";
 import { ChevronRight } from "lucide-react";
 import { GithubIcon } from "@/components/icons/github";
 import { GoogleIcon } from "@/components/icons/google";
-import configPromise from "@/payload.config";
-import { Field } from "payload";
 
-type UserField = Field & {
-  name: string;
-  required: boolean;
+export const metadata = {
+  title: "Create your account | Payload Auth Starter",
+  description: "Welcome! Please fill in the details to get started.",
 };
 
 export default async function Register() {
-  const config = await configPromise;
-  const userConfig = config.collections.find((c) => c.slug === "users")!;
-  const fields = userConfig.fields as UserField[];
-  const nameField = fields.find((field) => field.name === "name");
-
   return (
     <CardLayout
       title="Create your account"
@@ -49,30 +42,26 @@ export default async function Register() {
             </div>
           </div>
 
-          {nameField && (
-            <div className="grid gap-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="name">Name</Label>
-                {!nameField.required && (
-                  <span
-                    id="email-optional"
-                    className="text-sm/6 text-gray-500 leading-none"
-                  >
-                    Optional
-                  </span>
-                )}
-              </div>
-              <Input
-                id="name"
-                type="text"
-                name="name"
-                required
-                autoFocus
-                tabIndex={1}
-                autoComplete="name"
-              />
+          <div className="grid gap-2">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="name">Name</Label>
+              <span
+                id="email-optional"
+                className="text-sm/6 text-gray-500 leading-none"
+              >
+                Optional
+              </span>
             </div>
-          )}
+            <Input
+              id="name"
+              type="text"
+              name="name"
+              required
+              autoFocus
+              tabIndex={1}
+              autoComplete="name"
+            />
+          </div>
 
           <div className="grid gap-2">
             <Label htmlFor="email">Email address</Label>

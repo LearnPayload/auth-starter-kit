@@ -8,6 +8,11 @@ import { ChevronRight } from "lucide-react";
 import { GithubIcon } from "@/components/icons/github";
 import { GoogleIcon } from "@/components/icons/google";
 
+export const metadata = {
+  title: "Sign in | Payload Auth Starter",
+  description: "Welcome back! Please sign in to continue.",
+};
+
 export default function Login() {
   return (
     <CardLayout
