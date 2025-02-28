@@ -4,6 +4,7 @@ import Link from "next/link";
 import { GithubIcon } from "@/components/icons/github";
 import route from "@/lib/route";
 import { User } from "@/payload-types";
+import { ExternalLinkIcon } from "lucide-react";
 
 export default function Page() {
   return (
@@ -29,9 +30,14 @@ export default function Page() {
         <div className="relative flex flex-col items-center justify-center">
           <p className="inline text-white font-display text-2xl text-center">
             Your complete auth starter kit for{" "}
-            <span className="inline bg-linear-to-r from-[#49B283] via-accent to-[#49A2B2] bg-clip-text text-transparent border-b border-dashed">
-              PayloadCMS
-            </span>
+            <Link
+              href="https://payloadcms.com/"
+              target="_blank"
+              className="bg-linear-to-r from-[#49B283] via-accent to-[#49A2B2] bg-clip-text text-transparent border-b border-dashed hover:border-transparent inline-flex items-center gap-1"
+            >
+              <span>Payload CMS</span>
+              <ExternalLinkIcon className="text-white -mt-2" size={12} />
+            </Link>
           </p>
           <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
             <Link
@@ -42,7 +48,8 @@ export default function Page() {
             </Link>
             <Link
               className="rounded-full bg-slate-800 py-2 px-4 text-base font-medium text-white hover:bg-slate-700 focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/30 active:text-slate-400 transition-colors flex items-center gap-2"
-              href="/"
+              href="https://github.com/LearnPayload/auth-starter-kit"
+              target="_blank"
             >
               <GithubIcon /> View on GitHub
             </Link>
