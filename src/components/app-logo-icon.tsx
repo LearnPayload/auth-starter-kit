@@ -23,6 +23,7 @@ export default function AppLogoIcon({ size = "md" }: AppLogoIconProps) {
         className={cn("hidden shrink-0 dark:flex", sizes[size])}
         width={48}
         height={48}
+        priority
       />
       <Image
         src={lightLogo}
@@ -30,6 +31,7 @@ export default function AppLogoIcon({ size = "md" }: AppLogoIconProps) {
         className={cn("shrink-0 dark:hidden", sizes[size])}
         width={48}
         height={48}
+        priority
       />
     </div>
   );
