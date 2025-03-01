@@ -9,8 +9,10 @@ const instrument = Instrument_Sans({
 });
 
 export const metadata = {
-  description: "A blank template using Payload in a Next.js app.",
-  title: "Payload Blank Template",
+  title:
+    "Payload Auth Starter Kit, your complete auth starter kit for Payload CMS",
+  description:
+    "A starter template for building authentication workflows with Payload and Next.js.",
 };
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

@@ -1,7 +1,7 @@
 "use server";
 
 import { getCookieExpiration } from "payload";
-import { getPayload } from "../_db/payload";
+import { getPayload } from "../_services/payload";
 import { cookies } from "next/headers";
 
 export const setAuthCookie = async (token: string) => {
@@ -23,4 +23,9 @@ export const setAuthCookie = async (token: string) => {
     domain: collectionConfig.auth.cookies.domain ?? undefined,
     secure: collectionConfig.auth.cookies.secure,
   });
+};
+
+export const destroyAuthCookie = async () => {
+  const cookieStore = await cookies();
+  cookieStore.delete("payload-token");
 };

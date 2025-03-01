@@ -1,8 +1,8 @@
 "use client";
 
-import { GithubIcon } from "@/components/icons/github";
-import { GoogleIcon } from "@/components/icons/google";
-import TextLink from "@/components/text-link";
+import { GithubIcon } from "@/app/(auth)/_components/icons/github";
+import { GoogleIcon } from "@/app/(auth)/_components/icons/google";
+import TextLink from "@/app/(auth)/_components/text-link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import route from "@/lib/route";
@@ -15,8 +15,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useStandardLoginForm } from "../../_form/use-standard-login";
-export const LoginForm = () => {
+import { useStandardLoginForm } from "./use-standard-login-form";
+export const StandardLoginForm = () => {
   const {
     form,
     action: { isPending },
@@ -83,7 +83,7 @@ export const LoginForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
                       type="password"

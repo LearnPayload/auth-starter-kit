@@ -1,7 +1,7 @@
 import Image from "next/image";
 import darkLogo from "@/public/logo-dark.svg";
 import Link from "next/link";
-import { GithubIcon } from "@/components/icons/github";
+import { GithubIcon } from "@/app/(auth)/_components/icons/github";
 import route from "@/lib/route";
 import { User } from "@/payload-types";
 import { ExternalLinkIcon } from "lucide-react";
@@ -21,7 +21,7 @@ export default function Page() {
             />
             <h1 className="text-6xl font-bold tracking-tight text-white translate-y-0 opacity-100 transition-all duration-750 starting:translate-y-6 starting:opacity-0 flex flex-col text-center">
               Payload
-              <span className="inline bg-linear-to-r from-[#49B283] via-accent to-[#49A2B2] bg-clip-text text-transparent">
+              <span className="inline bg-linear-to-r from-[#49B283] via-brand to-[#49A2B2] bg-clip-text text-transparent">
                 Auth Starter Kit
               </span>
             </h1>
@@ -33,7 +33,7 @@ export default function Page() {
             <Link
               href="https://payloadcms.com/"
               target="_blank"
-              className="bg-linear-to-r from-[#49B283] via-accent to-[#49A2B2] bg-clip-text text-transparent border-b border-dashed hover:border-transparent inline-flex items-center gap-1"
+              className="bg-linear-to-r from-[#49B283] via-brand to-[#49A2B2] bg-clip-text text-transparent border-b border-dashed hover:border-transparent inline-flex items-center gap-1"
             >
               <span>Payload CMS</span>
               <ExternalLinkIcon className="text-white -mt-2" size={12} />
@@ -41,8 +41,8 @@ export default function Page() {
           </p>
           <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
             <Link
-              className="rounded-full bg-linear-to-r from-[#49B283] via-accent to-[#49A2B2] py-2 px-6 text-base font-semibold text-slate-900 hover:from-[#56c593] hover:via-[#56c7ac] hover:to-[#58b8c9] focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#49A2B299] active:bg-sky-500 transition"
-              href={route<User>("login", { id: "1" })}
+              className="rounded-full bg-linear-to-r from-[#49B283] via-brand to-[#49A2B2] py-2 px-6 text-base font-semibold text-slate-900 hover:from-[#56c593] hover:via-[#56c7ac] hover:to-[#58b8c9] focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#49A2B299] active:bg-sky-500 transition"
+              href={route("login")}
             >
               Get started
             </Link>

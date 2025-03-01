@@ -2,10 +2,10 @@
 
 import { returnValidationErrors } from "next-safe-action";
 import { standardLoginSchema } from "./validation";
-import { actionClient } from "../_lib/safe-action";
+import { actionClient } from "../../_lib/safe-action";
 import { redirect } from "next/navigation";
-import { getPayload } from "../_db/payload";
-import { setAuthCookie } from "../_lib/set-auth-cookie";
+import { getPayload } from "../../_services/payload";
+import { setAuthCookie } from "../../_lib/set-auth-cookie";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",
@@ -28,7 +28,6 @@ export const standardLoginAction = actionClient
       });
 
       await setAuthCookie(token!);
-      console.log({ token });
     } catch (error: any) {
       returnValidationErrors(standardLoginSchema, {
         _errors: [ERROR_MESSAGES[error.name] ?? ERROR_MESSAGES.Default],
