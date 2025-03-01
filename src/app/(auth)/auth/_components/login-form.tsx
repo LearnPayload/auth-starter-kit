@@ -21,7 +21,7 @@ export const LoginForm = () => {
     form,
     action: { isPending },
     handleSubmitWithAction,
-  } = useStandardLoginForm({ email: "hello@example.com", password: "123444" });
+  } = useStandardLoginForm({ email: "hello@example.com", password: "1234" });
 
   const rootError = form.formState.errors.root;
   return (
