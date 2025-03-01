@@ -29,9 +29,13 @@ export const createAccountAction = actionClient
       });
 
       await loginWith(user, { collection: "users" });
-    } catch (error: any) {
+    } catch (error: unknown) {
+      let errorMessage = ERROR_MESSAGES.Default;
+      if (error instanceof Error) {
+        errorMessage = ERROR_MESSAGES[error.name] ?? ERROR_MESSAGES.Default;
+      }
       returnValidationErrors(createAccountSchema, {
-        _errors: [ERROR_MESSAGES[error.name] ?? ERROR_MESSAGES.Default],
+        _errors: [errorMessage],
       });
     }
 

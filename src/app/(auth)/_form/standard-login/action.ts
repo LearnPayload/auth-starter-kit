@@ -28,9 +28,13 @@ export const standardLoginAction = actionClient
       });
 
       await setAuthCookie(token!);
-    } catch (error: any) {
+    } catch (error: unknown) {
+      let errorMessage = ERROR_MESSAGES.Default;
+      if (error instanceof Error) {
+        errorMessage = ERROR_MESSAGES[error.name] ?? ERROR_MESSAGES.Default;
+      }
       returnValidationErrors(standardLoginSchema, {
-        _errors: [ERROR_MESSAGES[error.name] ?? ERROR_MESSAGES.Default],
+        _errors: [errorMessage],
       });
     }
 

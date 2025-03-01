@@ -1,5 +1,5 @@
 import { User } from "@/payload-types";
-import { CollectionSlug, getCookieExpiration, getFieldsToSign } from "payload";
+import { CollectionSlug, getFieldsToSign } from "payload";
 import { getPayload } from "../_services/payload";
 import { jwtSign } from "./jwt-sign";
 import { setAuthCookie } from "./set-auth-cookie";

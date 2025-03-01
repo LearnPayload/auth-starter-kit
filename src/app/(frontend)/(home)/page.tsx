@@ -3,7 +3,6 @@ import darkLogo from "@/public/logo-dark.svg";
 import Link from "next/link";
 import { GithubIcon } from "@/app/(auth)/_components/icons/github";
 import route from "@/lib/route";
-import { User } from "@/payload-types";
 import { ExternalLinkIcon } from "lucide-react";
 
 export default function Page() {
