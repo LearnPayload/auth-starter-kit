@@ -3,7 +3,7 @@ const routes = {
   login: "/auth/login",
   register: "/auth/register",
   property: "/property/:id",
-  users: "/users/:id",
+  dashboard: "/dashboard",
   "password.request": "/auth/password/request",
 } as const;
 

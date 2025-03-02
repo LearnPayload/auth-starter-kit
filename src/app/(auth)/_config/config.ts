@@ -1,7 +1,7 @@
 export const AUTH_CONFIG = {
-  redirectAfterLogin: "/settings/profile",
+  redirectAfterLogin: "/dashboard",
   redirectAfterLogout: "/",
-  protectedRoutes: ["/settings(.*)"],
+  protectedRoutes: ["/dashboard(.*)"],
   publicRoutes: ["/auth(.*)"],
   defaultSignInRoute: "/auth/login",
 };

@@ -1,9 +1,8 @@
 import Image from "next/image";
 import darkLogo from "@/public/logo-dark.svg";
 import Link from "next/link";
-import { GithubIcon } from "@/app/(auth)/_components/icons/github";
-import route from "@/lib/route";
 import { ExternalLinkIcon } from "lucide-react";
+import { HeroButtons } from "./_components/hero-buttons";
 
 export default function Page() {
   return (
@@ -39,19 +38,7 @@ export default function Page() {
             </Link>
           </p>
           <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
-            <Link
-              className="rounded-full bg-linear-to-r from-[#49B283] via-brand to-[#49A2B2] py-2 px-6 text-base font-semibold text-slate-900 hover:from-[#56c593] hover:via-[#56c7ac] hover:to-[#58b8c9] focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#49A2B299] active:bg-sky-500 transition"
-              href={route("login")}
-            >
-              Get started
-            </Link>
-            <Link
-              className="rounded-full bg-slate-800 py-2 px-4 text-base font-medium text-white hover:bg-slate-700 focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/30 active:text-slate-400 transition-colors flex items-center gap-2"
-              href="https://github.com/LearnPayload/auth-starter-kit"
-              target="_blank"
-            >
-              <GithubIcon /> View on GitHub
-            </Link>
+            <HeroButtons />
           </div>
         </div>
       </div>

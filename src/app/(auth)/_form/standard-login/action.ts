@@ -6,6 +6,7 @@ import { actionClient } from "../../_lib/safe-action";
 import { redirect } from "next/navigation";
 import { getPayload } from "../../_services/payload";
 import { setAuthCookie } from "../../_lib/set-auth-cookie";
+import { AUTH_CONFIG } from "../../_config/config";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",
@@ -38,5 +39,5 @@ export const standardLoginAction = actionClient
       });
     }
 
-    redirect("/");
+    redirect(AUTH_CONFIG.redirectAfterLogin);
   });

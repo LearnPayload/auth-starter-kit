@@ -51,7 +51,9 @@ export const authMiddleware: AuthMiddleWareFunction =
     }
 
     if (isPublicRoute(request.url) && user) {
-      return NextResponse.redirect(new URL("/settings/profile", request.url));
+      return NextResponse.redirect(
+        new URL(AUTH_CONFIG.redirectAfterLogin, request.url),
+      );
     }
 
     if (cb) return cb(authRequest);

@@ -1,8 +1,6 @@
 import React from "react";
 import { Instrument_Sans } from "next/font/google";
 import "../(frontend)/styles.css";
-import { getAuth } from "./_services/get-auth";
-import { AuthProvider } from "./_providers/auth-provider";
 
 const instrument = Instrument_Sans({
   weight: ["600", "700"],
@@ -19,15 +17,12 @@ export const metadata = {
 
 export default async function AuthLayout(props: { children: React.ReactNode }) {
   const { children } = props;
-  const { user } = await getAuth();
 
   return (
-    <AuthProvider user={user}>
-      <html lang="en">
-        <body className={instrument.variable}>
-          <main>{children}</main>
-        </body>
-      </html>
-    </AuthProvider>
+    <html lang="en">
+      <body className={instrument.variable}>
+        <main>{children}</main>
+      </body>
+    </html>
   );
 }

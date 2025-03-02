@@ -25,15 +25,15 @@ export const Users: CollectionConfig = {
     {
       name: "name",
       type: "text",
-      required: false,
-      hidden: true,
+      required: true,
     },
     {
-      name: "username",
+      name: "avatar",
       type: "text",
-      required: false,
-      unique: true,
-      hidden: true,
+      required: true,
+      defaultValue: () => {
+        return `https://api.dicebear.com/9.x/bottts/png?seed=${Date.now()}`;
+      },
     },
   ],
 };
