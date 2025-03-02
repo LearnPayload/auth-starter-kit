@@ -8,7 +8,7 @@ type LoginWithOptions = {
   collection: CollectionSlug;
 };
 
-export const loginWith = async (
+export const loginAs = async (
   user: User,
   { collection = "users" }: LoginWithOptions,
 ) => {

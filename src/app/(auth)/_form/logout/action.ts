@@ -1,3 +1,5 @@
+"use server";
+
 import { actionClient } from "../../_lib/safe-action";
 import { destroyAuthCookie } from "../../_lib/set-auth-cookie";
 

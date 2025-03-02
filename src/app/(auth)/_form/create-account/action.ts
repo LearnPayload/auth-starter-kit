@@ -3,9 +3,9 @@
 import { returnValidationErrors } from "next-safe-action";
 import { actionClient } from "../../_lib/safe-action";
 import { redirect } from "next/navigation";
-import { getPayload } from "../../_services/payload";
 import { createAccountSchema } from "./validation";
-import { loginWith } from "../../_lib/login-as";
+import { loginAs } from "../../_lib/login-as";
+import { createUser } from "../../_services/create-user";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",
@@ -15,20 +15,10 @@ const ERROR_MESSAGES: Record<string, string> = {
 export const createAccountAction = actionClient
   .schema(createAccountSchema)
   .action(async ({ parsedInput: { email, password, name } }) => {
-    const payload = await getPayload();
-
     try {
-      const user = await payload.create({
-        collection: "users", // required
-        data: {
-          email,
-          password,
-          name,
-        },
-        overrideAccess: true,
-      });
+      const user = await createUser({ email, password, name });
 
-      await loginWith(user, { collection: "users" });
+      await loginAs(user, { collection: "users" });
     } catch (error: unknown) {
       let errorMessage = ERROR_MESSAGES.Default;
       if (error instanceof Error) {

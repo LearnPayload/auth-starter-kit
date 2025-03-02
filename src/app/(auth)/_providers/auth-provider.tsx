@@ -28,33 +28,7 @@ export const AuthProvider = ({
 }) => {
   const router = useRouter();
   const [user, setUser] = useState<User | null>(initialUser);
-  const [isLoading, setIsLoading] = useState<boolean>(!initialUser);
-
-  useEffect(() => {
-    // If we already have initial user data, skip fetching
-    console.log("initialUser", initialUser);
-    if (!initialUser) {
-      setIsLoading(false);
-      return;
-    }
-
-    const fetchUser = async () => {
-      try {
-        const user = await fetchMe();
-        if (!user) {
-          throw new Error("Failed to fetch user");
-        }
-        setUser(user);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-        // You might want to handle auth errors here (redirect to login, etc.)
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchUser();
-  }, [initialUser]);
+  const [isLoading] = useState<boolean>(!initialUser);
 
   const logout = () => {
     setUser(null);

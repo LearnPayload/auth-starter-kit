@@ -5,7 +5,6 @@ import {
   Bell,
   ChevronsUpDown,
   CreditCard,
-  LogOut,
   Sparkles,
 } from "lucide-react";
 
@@ -92,8 +91,8 @@ export function NavUser({ user }: { user: User }) {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogoutButton variant={"ghost"} />
+            <DropdownMenuItem asChild>
+              <LogoutButton variant={"ghost"} className="w-full" />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

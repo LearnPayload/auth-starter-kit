@@ -17,10 +17,10 @@ export default function Page() {
               width={150}
               height={150}
             />
-            <h1 className="text-6xl font-bold tracking-tight text-white translate-y-0 opacity-100 transition-all duration-750 starting:translate-y-6 starting:opacity-0 flex flex-col text-center">
-              Payload
+            <h1 className="text-6xl font-bold tracking-tight text-white translate-y-0 opacity-100 transition-all duration-750 starting:translate-y-6 starting:opacity-0 text-center">
+              Payload{" "}
               <span className="inline bg-linear-to-r from-[#49B283] via-brand to-[#49A2B2] bg-clip-text text-transparent">
-                Auth Starter Kit
+                AuthKit
               </span>
             </h1>
           </div>
