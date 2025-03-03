@@ -5,7 +5,7 @@ import TextLink from "@/app/(auth)/_components/text-link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import route from "@/lib/route";
-import { LoaderCircle } from "lucide-react";
+import { ChevronRightIcon, LoaderCircle } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -16,7 +16,15 @@ import {
 } from "@/components/ui/form";
 import { useStandardLoginForm } from "./use-standard-login-form";
 import { GithubLogin } from "../github-login/github-login";
+import { useState } from "react";
+import { RequestOneTimePasswordButton } from "../request-otp/request-otp-button";
+import { cn } from "@/lib/utils";
+import { SubmitOneTimePasswordForm } from "../submit-otp/submit-otp-form";
+
+type LoginStep = "init" | "password" | "otp";
+
 export const StandardLoginForm = () => {
+  const [formStep, setFormStep] = useState<LoginStep>("init");
   const {
     form,
     action: { isPending },
@@ -46,37 +54,37 @@ export const StandardLoginForm = () => {
           </div>
         </div>
         <Form {...form}>
-          <form onSubmit={handleSubmitWithAction} className="grid gap-6">
-            <div className="grid gap-6">
-              <div className="grid gap-2">
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem className="w-full">
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="text"
-                          autoFocus
-                          tabIndex={1}
-                          autoComplete="email"
-                          placeholder="email@example.com"
-                          disabled={isPending}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                      {rootError && (
-                        <div className="text-destructive text-sm text-center">
-                          {rootError.message}
-                        </div>
-                      )}
-                    </FormItem>
-                  )}
-                />
-              </div>
+          <div className="grid gap-4">
+            <div className={cn("grid gap-2", { hidden: formStep !== "init" })}>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        autoFocus
+                        tabIndex={1}
+                        autoComplete="email"
+                        placeholder="email@example.com"
+                        disabled={isPending}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    {rootError && (
+                      <div className="text-destructive text-sm text-center">
+                        {rootError.message}
+                      </div>
+                    )}
+                  </FormItem>
+                )}
+              />
+            </div>
 
+            {formStep === "password" && (
               <div className="grid gap-2">
                 <FormField
                   control={form.control}
@@ -99,25 +107,60 @@ export const StandardLoginForm = () => {
                   )}
                 />
               </div>
+            )}
 
+            {formStep === "otp" && (
+              <div className="gap-2 flex flex-col items-center justify-center text-center">
+                <SubmitOneTimePasswordForm
+                  email={form.getValues("email")}
+                  onSuccess={console.log}
+                />
+              </div>
+            )}
+
+            {formStep === "init" && (
               <Button
-                type="submit"
-                className="mt-4 w-full"
+                type="button"
+                className="w-full"
                 tabIndex={4}
-                disabled={isPending}
+                onClick={() => setFormStep("password")}
               >
-                {isPending && <LoaderCircle className="h-4 w-4 animate-spin" />}
-                Sign in
+                Continue <ChevronRightIcon size={12} />
               </Button>
-            </div>
+            )}
 
-            <div className="text-muted-foreground text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <TextLink href={route("register")} tabIndex={5}>
-                Sign up
-              </TextLink>
-            </div>
-          </form>
+            {formStep === "password" && (
+              <div className="grid gap-2">
+                <Button
+                  type="button"
+                  className="w-full"
+                  tabIndex={4}
+                  disabled={isPending}
+                  onClick={handleSubmitWithAction}
+                >
+                  {isPending && (
+                    <LoaderCircle className="h-4 w-4 animate-spin" />
+                  )}
+                  Sign in with password
+                </Button>
+
+                <RequestOneTimePasswordButton
+                  email={form.getValues("email")}
+                  onSubmit={() => {
+                    console.log("OTP sent");
+                    setFormStep("otp");
+                  }}
+                />
+              </div>
+            )}
+          </div>
+
+          <div className="text-muted-foreground text-center text-sm">
+            Don&apos;t have an account?{" "}
+            <TextLink href={route("register")} tabIndex={5}>
+              Sign up
+            </TextLink>
+          </div>
         </Form>
       </div>
     </div>
