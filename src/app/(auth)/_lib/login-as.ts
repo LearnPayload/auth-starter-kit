@@ -1,27 +1,13 @@
-import { User } from "@/payload-types";
-import { CollectionSlug, getFieldsToSign } from "payload";
+import { getFieldsToSign } from "payload";
 import { getPayload } from "../_services/payload";
 import { jwtSign } from "./jwt-sign";
 import { setAuthCookie } from "./set-auth-cookie";
+import { User } from "../_collections/users/user-data";
 
-type LoginWithOptions = {
-  collection: CollectionSlug;
-};
-
-export const loginAs = async (
-  user: User,
-  { collection = "users" }: LoginWithOptions,
-) => {
+export const loginAs = async (user: User) => {
   const payload = await getPayload();
 
-  const userWithCollection: User & {
-    collection: "users";
-  } = {
-    ...user,
-    collection: "users",
-  };
-
-  const collectionConfig = payload.collections[collection].config;
+  const collectionConfig = payload.collections[user.collection].config;
 
   if (!collectionConfig.auth) {
     throw new Error("Collection is not used for authentication");
@@ -30,8 +16,8 @@ export const loginAs = async (
   const secret = payload.secret;
   const fieldsToSign = getFieldsToSign({
     collectionConfig,
-    email: userWithCollection.email,
-    user: userWithCollection,
+    email: user.email,
+    user: user.asTypedUser(),
   });
 
   const { token } = await jwtSign({

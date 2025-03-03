@@ -6,18 +6,22 @@ import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hoo
 import { requestOneTimePasswordSchema } from "./validation";
 import { requestOneTimePasswordLoginAction } from "./action";
 
+export type RequestOTPSuccessArgs = {
+  data?: { successful: boolean; email: string };
+};
+
 export const useRequestOTP = (
   defaultValues: z.infer<typeof requestOneTimePasswordSchema> = {
     email: "",
   },
-  onSubmit: () => void,
+  onSuccess: (args: RequestOTPSuccessArgs) => void,
 ) => {
   return useHookFormAction(
     requestOneTimePasswordLoginAction,
     zodResolver(requestOneTimePasswordSchema),
     {
       actionProps: {
-        onSuccess: onSubmit,
+        onSuccess,
       },
       formProps: { defaultValues },
       errorMapProps: {},

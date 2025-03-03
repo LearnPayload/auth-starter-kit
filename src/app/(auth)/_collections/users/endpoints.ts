@@ -2,7 +2,7 @@ import { Endpoint, PayloadRequest } from "payload";
 import { loginAs } from "../../_lib/login-as";
 import { AUTH_CONFIG } from "../../_lib/config";
 import { randomBytes } from "node:crypto";
-import { UserData } from "./user-data";
+import { User } from "./user-data";
 import { GithubUserProfile } from "../../_form/github-login/types";
 
 export const oAuthCallbackEndpoint: Endpoint = {
@@ -57,7 +57,7 @@ export const oAuthCallbackEndpoint: Endpoint = {
       );
     }
     const password = randomBytes(16).toString("hex");
-    const user = await UserData.updateOrCreate(
+    const user = await User.updateOrCreate(
       { email: { equals: githubUser.email } },
       {
         name: githubUser.name,
@@ -68,7 +68,7 @@ export const oAuthCallbackEndpoint: Endpoint = {
     );
 
     try {
-      await loginAs(user, { collection: "users" });
+      await loginAs(user);
     } catch (error) {
       console.error(error);
       return Response.redirect(

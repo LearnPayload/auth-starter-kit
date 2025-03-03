@@ -9,6 +9,7 @@ import sharp from "sharp";
 
 import { Media } from "./config/collections/Media";
 import { Users } from "./app/(auth)/_collections/users/config";
+import { emailConfig } from "./app/(auth)/_config/email/config";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -20,6 +21,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  email: await emailConfig(),
   serverURL: "http://localhost:2222",
   collections: [Users, Media],
   editor: lexicalEditor(),

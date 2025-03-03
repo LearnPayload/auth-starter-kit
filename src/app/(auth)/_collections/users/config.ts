@@ -27,7 +27,7 @@ export const Users: CollectionConfig = {
     {
       name: "name",
       type: "text",
-      required: true,
+      required: false,
     },
     {
       name: "avatar",
@@ -35,6 +35,24 @@ export const Users: CollectionConfig = {
       required: true,
       defaultValue: () => {
         return `https://api.dicebear.com/9.x/bottts/png?seed=${Date.now()}`;
+      },
+    },
+    // One time password and expiry
+    {
+      name: "otp",
+      type: "text",
+      minLength: 6,
+      required: false,
+      admin: {
+        disabled: true,
+      },
+    },
+    {
+      name: "otp_expiration",
+      type: "date",
+      required: false,
+      admin: {
+        disabled: true,
       },
     },
   ],

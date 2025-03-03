@@ -5,7 +5,7 @@ import { actionClient } from "../../_lib/safe-action";
 import { redirect } from "next/navigation";
 import { createAccountSchema } from "./validation";
 import { loginAs } from "../../_lib/login-as";
-import { createUser } from "../../_services/create-user";
+import { User } from "../../_collections/users/user-data";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",
@@ -16,9 +16,9 @@ export const createAccountAction = actionClient
   .schema(createAccountSchema)
   .action(async ({ parsedInput: { email, password, name } }) => {
     try {
-      const user = await createUser({ email, password, name });
+      const user = await User.create({ email, password, name, avatar: "" });
 
-      await loginAs(user, { collection: "users" });
+      await loginAs(user);
     } catch (error: unknown) {
       let errorMessage = ERROR_MESSAGES.Default;
       if (error instanceof Error) {

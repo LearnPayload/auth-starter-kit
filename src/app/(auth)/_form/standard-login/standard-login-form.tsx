@@ -146,8 +146,8 @@ export const StandardLoginForm = () => {
 
                 <RequestOneTimePasswordButton
                   email={form.getValues("email")}
-                  onSubmit={() => {
-                    console.log("OTP sent");
+                  onSuccess={(args) => {
+                    console.log({ args });
                     setFormStep("otp");
                   }}
                 />

@@ -4,4 +4,5 @@ export const AUTH_CONFIG = {
   protectedRoutes: ["/dashboard(.*)"],
   publicRoutes: ["/auth(.*)"],
   defaultSignInRoute: "/auth/login",
+  otpExpirationMinutes: 5,
 };
