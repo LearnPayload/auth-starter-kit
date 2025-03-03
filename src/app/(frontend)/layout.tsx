@@ -1,7 +1,6 @@
 import React from "react";
 import { Instrument_Sans } from "next/font/google";
 import "./styles.css";
-import { AuthProvider } from "../(auth)/_providers/auth-provider";
 import { AuthProviderServer } from "../(auth)/_providers/auth-provider-server";
 
 const instrument = Instrument_Sans({

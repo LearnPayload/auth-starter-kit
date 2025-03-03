@@ -1,4 +1,3 @@
-import { AuthProvider } from "@/app/(auth)/_providers/auth-provider";
 import { AuthProviderServer } from "@/app/(auth)/_providers/auth-provider-server";
 import { AppSidebar } from "@/components/app-sidebar";
 import {

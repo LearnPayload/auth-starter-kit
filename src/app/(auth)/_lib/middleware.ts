@@ -1,6 +1,6 @@
 import { User } from "@/payload-types";
 import { NextRequest, NextResponse } from "next/server";
-import { AUTH_CONFIG } from "../_config/config";
+import { AUTH_CONFIG } from "./config";
 
 export type AuthNextRequest = NextRequest & {
   user: User | null;

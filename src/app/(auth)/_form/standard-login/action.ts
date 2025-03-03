@@ -6,7 +6,7 @@ import { actionClient } from "../../_lib/safe-action";
 import { redirect } from "next/navigation";
 import { getPayload } from "../../_services/payload";
 import { setAuthCookie } from "../../_lib/set-auth-cookie";
-import { AUTH_CONFIG } from "../../_config/config";
+import { AUTH_CONFIG } from "../../_lib/config";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",

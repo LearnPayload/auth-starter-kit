@@ -1,6 +1,5 @@
 "use client";
 
-import { GithubIcon } from "@/app/(auth)/_components/icons/github";
 import { GoogleIcon } from "@/app/(auth)/_components/icons/google";
 import TextLink from "@/app/(auth)/_components/text-link";
 import { Button } from "@/components/ui/button";

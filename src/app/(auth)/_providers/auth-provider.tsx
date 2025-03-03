@@ -1,14 +1,7 @@
 "use client";
 
 import { User } from "@/payload-types";
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { fetchMe } from "../_services/fetch-me";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 
 type AuthContextType = {

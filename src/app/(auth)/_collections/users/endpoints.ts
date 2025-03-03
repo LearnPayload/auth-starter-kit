@@ -1,8 +1,9 @@
 import { Endpoint, PayloadRequest } from "payload";
-import { loginAs } from "../_lib/login-as";
-import { getUserByEmail } from "../_services/get-user-by-email";
-import { createUser } from "../_services/create-user";
-import { AUTH_CONFIG } from "./config";
+import { loginAs } from "../../_lib/login-as";
+import { AUTH_CONFIG } from "../../_lib/config";
+import { randomBytes } from "node:crypto";
+import { UserData } from "./user-data";
+import { GithubUserProfile } from "../../_form/github-login/types";
 
 export const oAuthCallbackEndpoint: Endpoint = {
   path: "/auth/:provider/callback",
@@ -27,7 +28,9 @@ export const oAuthCallbackEndpoint: Endpoint = {
     );
 
     if (!tokenRes.ok) {
-      return Response.redirect(new URL(`/login?error=github_email`, req.url));
+      return Response.redirect(
+        new URL(`/auth/login?error=github_email`, req.url),
+      );
     }
 
     const body = await tokenRes.json();
@@ -35,7 +38,9 @@ export const oAuthCallbackEndpoint: Endpoint = {
     const { access_token } = body;
 
     if (!access_token) {
-      return Response.redirect(new URL(`/login?error=github_email`, req.url));
+      return Response.redirect(
+        new URL(`/auth/login?error=github_email`, req.url),
+      );
     }
 
     const userRes = await fetch("https://api.github.com/user", {
@@ -44,24 +49,31 @@ export const oAuthCallbackEndpoint: Endpoint = {
       },
     });
 
-    const githubUser = await userRes.json();
+    const githubUser = (await userRes.json()) as GithubUserProfile;
 
     if (!githubUser || !githubUser.email) {
-      return Response.redirect(new URL(`/login?error=github_email`, req.url));
+      return Response.redirect(
+        new URL(`/auth/login?error=github_email`, req.url),
+      );
     }
-    const user =
-      (await getUserByEmail(githubUser.email)) ??
-      (await createUser({
-        email: githubUser.email,
+    const password = randomBytes(16).toString("hex");
+    const user = await UserData.updateOrCreate(
+      { email: { equals: githubUser.email } },
+      {
         name: githubUser.name,
+        email: githubUser.email,
         avatar: githubUser.avatar_url,
-      }));
+        password,
+      },
+    );
 
     try {
       await loginAs(user, { collection: "users" });
     } catch (error) {
       console.error(error);
-      return Response.redirect(new URL(`/login?error=github_email`, req.url));
+      return Response.redirect(
+        new URL(`/auth/login?error=github_email`, req.url),
+      );
     }
 
     return Response.redirect(new URL(AUTH_CONFIG.redirectAfterLogin, req.url));

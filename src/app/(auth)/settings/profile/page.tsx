@@ -1,5 +1,3 @@
-import { FormEventHandler } from "react";
-
 import DeleteUser from "@/components/delete-user";
 import HeadingSmall from "@/components/heading-small";
 import { Button } from "@/components/ui/button";

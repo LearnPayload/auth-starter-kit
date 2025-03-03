@@ -1,5 +1,6 @@
 import type { CollectionConfig } from "payload";
 import { randomBytes } from "node:crypto";
+import { oAuthCallbackEndpoint } from "./endpoints";
 
 export const Users: CollectionConfig = {
   slug: "users",
@@ -9,6 +10,7 @@ export const Users: CollectionConfig = {
   auth: {
     verify: false, // we create a custom verification flow
   },
+  endpoints: [oAuthCallbackEndpoint],
   fields: [
     {
       name: "id",

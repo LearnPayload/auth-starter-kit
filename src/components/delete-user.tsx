@@ -1,5 +1,5 @@
 "use client";
-import { FormEventHandler, useRef } from "react";
+import { useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,10 +19,6 @@ import {
 
 export default function DeleteUser() {
   const passwordInput = useRef<HTMLInputElement>(null);
-
-  const deleteUser: FormEventHandler = (e) => {
-    e.preventDefault();
-  };
 
   const closeModal = () => {};
 
