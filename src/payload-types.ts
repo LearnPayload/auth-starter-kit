@@ -119,7 +119,7 @@ export interface UserAuthOperations {
 export interface User {
   id: string;
   name?: string | null;
-  avatar: string;
+  avatar?: string | null;
   _verified?: boolean | null;
   otp?: string | null;
   otp_expiration?: string | null;

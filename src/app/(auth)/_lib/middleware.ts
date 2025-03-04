@@ -48,13 +48,20 @@ export const authMiddleware: AuthMiddleWareFunction =
     const baseUrl = new URL(request.url);
     const basePath = baseUrl.pathname;
 
+    console.log({ user });
+
     if (isProtectedRoute(request.url) && !user) {
       return NextResponse.redirect(
         new URL(AUTH_CONFIG.defaultSignInRoute, baseUrl.origin),
       );
     }
 
-    if (isProtectedRoute(request.url) && user && !user._verified) {
+    if (
+      isProtectedRoute(request.url) &&
+      !basePath.startsWith(AUTH_CONFIG.unverifiedSignInRoute) &&
+      user &&
+      !user._verified
+    ) {
       return NextResponse.redirect(
         new URL(AUTH_CONFIG.unverifiedSignInRoute, baseUrl.origin),
       );

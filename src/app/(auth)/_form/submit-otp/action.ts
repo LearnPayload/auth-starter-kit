@@ -6,6 +6,7 @@ import { actionClient } from "../../_lib/safe-action";
 import { otpLoginSchema } from "./validation";
 import { loginAs } from "../../_lib/login-as";
 import { redirect } from "next/navigation";
+import { AUTH_CONFIG } from "../../_lib/config";
 
 export const submitOneTimePasswordAction = actionClient
   .schema(otpLoginSchema)
@@ -39,5 +40,5 @@ export const submitOneTimePasswordAction = actionClient
 
     await loginAs(user);
 
-    redirect("/");
+    redirect(AUTH_CONFIG.redirectAfterLogin);
   });

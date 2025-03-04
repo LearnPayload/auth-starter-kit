@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { createAccountSchema } from "./validation";
 import { loginAs } from "../../_lib/login-as";
 import { User } from "../../_collections/users/user";
+import { AUTH_CONFIG } from "../../_lib/config";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",
@@ -16,18 +17,21 @@ export const createAccountAction = actionClient
   .schema(createAccountSchema)
   .action(async ({ parsedInput: { email, password, name } }) => {
     try {
-      const user = await User.create({ email, password, name, avatar: "" });
+      const user = await User.create({ email, password, name });
+
+      await user.updateAndSendEmailVerification();
 
       await loginAs(user);
     } catch (error: unknown) {
       let errorMessage = ERROR_MESSAGES.Default;
       if (error instanceof Error) {
-        errorMessage = ERROR_MESSAGES[error.name] ?? ERROR_MESSAGES.Default;
+        errorMessage =
+          error.message ?? ERROR_MESSAGES[error.name] ?? ERROR_MESSAGES.Default;
       }
       returnValidationErrors(createAccountSchema, {
         _errors: [errorMessage],
       });
     }
 
-    redirect("/");
+    redirect(AUTH_CONFIG.redirectAfterLogin);
   });

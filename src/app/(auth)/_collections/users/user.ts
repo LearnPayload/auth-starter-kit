@@ -6,6 +6,9 @@ import {
   Where,
 } from "payload";
 import { getPayload } from "../../_services/payload";
+import { randomInt } from "node:crypto";
+import { AUTH_CONFIG } from "../../_lib/config";
+import { send } from "../../_emails/otp";
 
 export class User {
   collection: CollectionSlug = "users";
@@ -112,5 +115,16 @@ export class User {
       id: this.data.id,
       data,
     });
+  }
+
+  async updateAndSendEmailVerification() {
+    const code = String(randomInt(100000, 999999));
+    await this.update({
+      otp: code,
+      otp_expiration: new Date(
+        Date.now() + AUTH_CONFIG.otpExpirationMinutes * 60 * 1000,
+      ).toISOString(),
+    });
+    await send({ email: this.email, code });
   }
 }

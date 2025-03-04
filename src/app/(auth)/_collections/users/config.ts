@@ -32,7 +32,7 @@ export const Users: CollectionConfig = {
     {
       name: "avatar",
       type: "text",
-      required: true,
+      required: false,
       defaultValue: () => {
         return `https://api.dicebear.com/9.x/bottts/png?seed=${Date.now()}`;
       },
