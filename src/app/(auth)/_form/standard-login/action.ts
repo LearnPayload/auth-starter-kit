@@ -10,7 +10,8 @@ import { AUTH_CONFIG } from "../../_lib/config";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",
-  InvalidCredentials: "These credentials do not match our records.",
+  AuthenticationError: "The email or password provided is incorrect.",
+  InvalidCredentials: "The email or password provided is incorrect.",
   LockedAuth: "This account has been locked.",
 } as const;
 
@@ -32,6 +33,7 @@ export const standardLoginAction = actionClient
     } catch (error: unknown) {
       let errorMessage = ERROR_MESSAGES.Default;
       if (error instanceof Error) {
+          console.error(error);
         errorMessage = ERROR_MESSAGES[error.name] ?? ERROR_MESSAGES.Default;
       }
       returnValidationErrors(standardLoginSchema, {

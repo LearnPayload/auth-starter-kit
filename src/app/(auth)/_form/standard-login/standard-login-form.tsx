@@ -55,7 +55,7 @@ export const StandardLoginForm = () => {
         </div>
         <Form {...form}>
           <div className="grid gap-4">
-            <div className={cn("grid gap-2", { hidden: formStep !== "init" })}>
+            <div className={cn("grid gap-2")}>
               <FormField
                 control={form.control}
                 name="email"

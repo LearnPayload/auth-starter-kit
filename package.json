@@ -16,11 +16,11 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
-    "@hookform/resolvers": "^4.1.2",
-    "@icons-pack/react-simple-icons": "^12.0.0",
+    "@hookform/resolvers": "^4.1.3",
+    "@icons-pack/react-simple-icons": "^12.1.0",
     "@next-safe-action/adapter-react-hook-form": "^1.0.13",
     "@payloadcms/db-postgres": "latest",
-    "@payloadcms/email-nodemailer": "^3.25.0",
+    "@payloadcms/email-nodemailer": "latest",
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
@@ -40,7 +40,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
-    "graphql": "^16.8.1",
+    "graphql": "^16.10.0",
     "input-otp": "^1.4.2",
     "jose": "^6.0.8",
     "lucide-react": "^0.476.0",
@@ -58,18 +58,18 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.2.0",
-    "@types/node": "^22.5.4",
+    "@eslint/eslintrc": "^3.3.0",
+    "@types/node": "^22.13.9",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
-    "eslint": "^9.16.0",
+    "eslint": "^9.21.0",
     "eslint-config-next": "15.1.5",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.3",
     "typescript": "5.7.3"
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0",
-    "pnpm": "^9"
+    "pnpm": "^10"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
