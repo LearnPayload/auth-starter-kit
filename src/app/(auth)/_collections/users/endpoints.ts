@@ -2,7 +2,7 @@ import { Endpoint, PayloadRequest } from "payload";
 import { loginAs } from "../../_lib/login-as";
 import { AUTH_CONFIG } from "../../_lib/config";
 import { randomBytes } from "node:crypto";
-import { User } from "./user-data";
+import { User } from "./user";
 import { GithubUserProfile } from "../../_form/github-login/types";
 
 export const oAuthCallbackEndpoint: Endpoint = {

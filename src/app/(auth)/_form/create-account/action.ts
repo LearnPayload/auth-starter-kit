@@ -5,7 +5,7 @@ import { actionClient } from "../../_lib/safe-action";
 import { redirect } from "next/navigation";
 import { createAccountSchema } from "./validation";
 import { loginAs } from "../../_lib/login-as";
-import { User } from "../../_collections/users/user-data";
+import { User } from "../../_collections/users/user";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",

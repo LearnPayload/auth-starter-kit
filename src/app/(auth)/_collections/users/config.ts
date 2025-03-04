@@ -8,7 +8,7 @@ export const Users: CollectionConfig = {
     useAsTitle: "email",
   },
   auth: {
-    verify: false, // we create a custom verification flow
+    verify: false, // Disable email verification to create a custom flow
   },
   endpoints: [oAuthCallbackEndpoint],
   fields: [
@@ -21,7 +21,7 @@ export const Users: CollectionConfig = {
         disabled: true,
       },
       defaultValue: () => {
-        return randomBytes(32).toString("hex");
+        return randomBytes(25).toString("hex");
       },
     },
     {
@@ -38,6 +38,13 @@ export const Users: CollectionConfig = {
       },
     },
     // One time password and expiry
+    {
+      name: "_verified",
+      type: "checkbox",
+      required: false,
+      defaultValue: false,
+      saveToJWT: true,
+    },
     {
       name: "otp",
       type: "text",

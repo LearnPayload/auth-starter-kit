@@ -2,7 +2,7 @@ import { getFieldsToSign } from "payload";
 import { getPayload } from "../_services/payload";
 import { jwtSign } from "./jwt-sign";
 import { setAuthCookie } from "./set-auth-cookie";
-import { User } from "../_collections/users/user-data";
+import { User } from "../_collections/users/user";
 
 export const loginAs = async (user: User) => {
   const payload = await getPayload();

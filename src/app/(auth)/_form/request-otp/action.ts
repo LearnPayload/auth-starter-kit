@@ -4,7 +4,7 @@ import { randomBytes, randomInt } from "node:crypto";
 import { actionClient } from "../../_lib/safe-action";
 import { requestOneTimePasswordSchema } from "./validation";
 import { send } from "../../_emails/otp";
-import { User } from "../../_collections/users/user-data";
+import { User } from "../../_collections/users/user";
 import { AUTH_CONFIG } from "../../_lib/config";
 import { returnValidationErrors } from "next-safe-action";
 

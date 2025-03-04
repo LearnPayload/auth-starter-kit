@@ -3,14 +3,17 @@ import { LoaderCircle, MailCheckIcon } from "lucide-react";
 import { RequestOTPSuccessArgs, useRequestOTP } from "./use-request-otp";
 import { RequestOneTimePasswordType } from "./validation";
 import InputError from "../../_components/input-error";
+import React from "react";
 
 type RequestOneTimePasswordButtonProps = RequestOneTimePasswordType & {
   onSuccess: (args: RequestOTPSuccessArgs) => void;
+  label?: React.ReactNode;
 };
 
 export const RequestOneTimePasswordButton = ({
   email,
   onSuccess,
+  label = "Send me a one-time password (OTP)",
 }: RequestOneTimePasswordButtonProps) => {
   const {
     form,
@@ -29,7 +32,7 @@ export const RequestOneTimePasswordButton = ({
       >
         {isPending && <LoaderCircle className="h-4 w-4 animate-spin" />}
         <MailCheckIcon />
-        Send me a one-time password (OTP)
+        {label}
       </Button>
 
       {form.formState.errors.root && (

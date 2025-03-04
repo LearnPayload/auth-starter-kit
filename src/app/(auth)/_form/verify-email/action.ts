@@ -3,9 +3,9 @@
 import { returnValidationErrors } from "next-safe-action";
 import { User } from "../../_collections/users/user";
 import { actionClient } from "../../_lib/safe-action";
-import { otpLoginSchema } from "./validation";
 import { loginAs } from "../../_lib/login-as";
 import { redirect } from "next/navigation";
+import { otpLoginSchema } from "../submit-otp/validation";
 
 export const submitOneTimePasswordAction = actionClient
   .schema(otpLoginSchema)
@@ -28,7 +28,6 @@ export const submitOneTimePasswordAction = actionClient
     await user.update({
       otp: null,
       otp_expiration: null,
-      _verified: true,
     });
 
     if (expires < now) {

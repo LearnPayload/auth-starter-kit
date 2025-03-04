@@ -5,8 +5,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { useSubmitOneTimePasswordForm } from "./use-submit-otp-form";
-import { SubmitOneTimePasswordEmail } from "./validation";
+import { useVerifyEmailForm } from "./use-verify-form";
 import {
   InputOTP,
   InputOTPGroup,
@@ -14,6 +13,7 @@ import {
 } from "@/components/ui/input-otp";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle } from "lucide-react";
+import { SubmitOneTimePasswordEmail } from "../submit-otp/validation";
 
 type SubmitOneTimePasswordFormProps = SubmitOneTimePasswordEmail & {
   onSuccess: () => void;
@@ -27,14 +27,12 @@ export const SubmitOneTimePasswordForm = ({
     form,
     action: { isPending },
     handleSubmitWithAction,
-  } = useSubmitOneTimePasswordForm({ email, otp: "" }, onSuccess);
+  } = useVerifyEmailForm({ email, otp: "" }, onSuccess);
   return (
     <div className="grid gap-4">
       <div className="">
-        <h3 className="font-semibold text-lg text-center">
-          Check your email for a code
-        </h3>
-        <p className="leading-relaxed text-sm opacity-80 text-center">
+        <h3 className="font-semibold text-lg">Check your email for a code</h3>
+        <p className="leading-relaxed text-sm opacity-80">
           We&apos;ve sent a 6-character code to{" "}
           <span className="font-semibold">{form.getValues("email")}</span> The
           code expires shortly, so please enter it soon.

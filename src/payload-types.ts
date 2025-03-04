@@ -120,6 +120,7 @@ export interface User {
   id: string;
   name?: string | null;
   avatar: string;
+  _verified?: boolean | null;
   otp?: string | null;
   otp_expiration?: string | null;
   updatedAt: string;
@@ -217,6 +218,7 @@ export interface UsersSelect<T extends boolean = true> {
   id?: T;
   name?: T;
   avatar?: T;
+  _verified?: T;
   otp?: T;
   otp_expiration?: T;
   updatedAt?: T;

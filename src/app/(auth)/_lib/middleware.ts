@@ -1,6 +1,7 @@
 import { User } from "@/payload-types";
 import { NextRequest, NextResponse } from "next/server";
 import { AUTH_CONFIG } from "./config";
+import { TypedUser } from "payload";
 
 export type AuthNextRequest = NextRequest & {
   user: User | null;
@@ -24,9 +25,9 @@ const parseUserFromEndpoint = async (request: NextRequest) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  const user = await resp.json();
-  if (!user) return null;
-
+  const data = await resp.json();
+  if (!data.user) return null;
+  const user = data.user as TypedUser;
   return user;
 };
 type AuthMiddlewareCallback = (
@@ -44,15 +45,35 @@ export const authMiddleware: AuthMiddleWareFunction =
     const authRequest: AuthNextRequest = request as AuthNextRequest;
     authRequest.user = user;
 
+    const baseUrl = new URL(request.url);
+    const basePath = baseUrl.pathname;
+
     if (isProtectedRoute(request.url) && !user) {
       return NextResponse.redirect(
-        new URL(AUTH_CONFIG.defaultSignInRoute, request.url),
+        new URL(AUTH_CONFIG.defaultSignInRoute, baseUrl.origin),
+      );
+    }
+
+    if (isProtectedRoute(request.url) && user && !user._verified) {
+      return NextResponse.redirect(
+        new URL(AUTH_CONFIG.unverifiedSignInRoute, baseUrl.origin),
+      );
+    }
+
+    // if on verify email route and user is verified, redirect to home
+    if (
+      basePath.startsWith(AUTH_CONFIG.unverifiedSignInRoute) &&
+      user &&
+      user._verified
+    ) {
+      return NextResponse.redirect(
+        new URL(AUTH_CONFIG.redirectAfterLogin, baseUrl.origin),
       );
     }
 
     if (isPublicRoute(request.url) && user) {
       return NextResponse.redirect(
-        new URL(AUTH_CONFIG.redirectAfterLogin, request.url),
+        new URL(AUTH_CONFIG.redirectAfterLogin, baseUrl.origin),
       );
     }
 

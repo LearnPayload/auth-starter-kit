@@ -6,6 +6,7 @@ import {
   ChevronsUpDown,
   CreditCard,
   Sparkles,
+  UserIcon,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -26,6 +27,7 @@ import {
 } from "@/components/ui/sidebar";
 import { User } from "@/payload-types";
 import { LogoutButton } from "@/app/(auth)/_form/logout/logout-button";
+import { getInitials } from "@/lib/utils";
 
 export function NavUser({ user }: { user: User }) {
   const { isMobile } = useSidebar();
@@ -41,7 +43,9 @@ export function NavUser({ user }: { user: User }) {
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user?.name ?? ""} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarFallback className="rounded-lg">
+                  {user?.name ? getInitials(user.name) : <UserIcon size={20} />}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{user.name}</span>
