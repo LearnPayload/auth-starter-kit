@@ -21,6 +21,7 @@
     "@next-safe-action/adapter-react-hook-form": "^1.0.13",
     "@payloadcms/db-postgres": "latest",
     "@payloadcms/email-nodemailer": "latest",
+    "@payloadcms/email-resend": "^3.25.0",
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
