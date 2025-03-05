@@ -4,6 +4,12 @@ import { oAuthCallbackEndpoint } from "./endpoints";
 
 export const Users: CollectionConfig = {
   slug: "users",
+  access: {
+    admin: ({ req: { user } }) => {
+      if (!user || user.role !== "admin") return false;
+      return true;
+    },
+  },
   admin: {
     useAsTitle: "email",
   },
@@ -36,6 +42,17 @@ export const Users: CollectionConfig = {
       defaultValue: () => {
         return `https://api.dicebear.com/9.x/bottts/png?seed=${Date.now()}`;
       },
+    },
+
+    {
+      name: "role",
+      type: "select",
+      options: [
+        { label: "Admin", value: "admin" },
+        { label: "User", value: "user" },
+      ],
+      required: true,
+      defaultValue: "user",
     },
     // One time password and expiry
     {

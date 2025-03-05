@@ -10,6 +10,7 @@ import sharp from "sharp";
 import { Media } from "./config/collections/Media";
 import { Users } from "./app/(auth)/_collections/users/config";
 import { emailConfig } from "./app/(auth)/_config/email/config";
+import AuthGlobalConfig from "./app/(auth)/_config/globals";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -22,6 +23,7 @@ export default buildConfig({
     },
   },
   email: await emailConfig(),
+  globals: [AuthGlobalConfig],
   serverURL: "http://localhost:2222",
   collections: [Users, Media],
   editor: lexicalEditor(),

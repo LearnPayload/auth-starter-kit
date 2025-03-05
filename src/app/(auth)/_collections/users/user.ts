@@ -108,7 +108,6 @@ export class User {
   };
 
   async update(data: Partial<RequiredDataFromCollectionSlug<"users">>) {
-    console.log("Updating user", this.data.id, JSON.stringify(data));
     const payload = await getPayload();
     await payload.update({
       collection: "users",

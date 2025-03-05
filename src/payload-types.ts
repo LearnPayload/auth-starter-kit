@@ -83,8 +83,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'auth-settings': AuthSetting;
+  };
+  globalsSelect: {
+    'auth-settings': AuthSettingsSelect<false> | AuthSettingsSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -120,6 +124,7 @@ export interface User {
   id: string;
   name?: string | null;
   avatar?: string | null;
+  role: 'admin' | 'user';
   _verified?: boolean | null;
   otp?: string | null;
   otp_expiration?: string | null;
@@ -218,6 +223,7 @@ export interface UsersSelect<T extends boolean = true> {
   id?: T;
   name?: T;
   avatar?: T;
+  role?: T;
   _verified?: T;
   otp?: T;
   otp_expiration?: T;
@@ -280,6 +286,60 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "auth-settings".
+ */
+export interface AuthSetting {
+  id: number;
+  authProviders?:
+    | {
+        provider: 'github' | 'google' | 'facebook';
+        clientId: string;
+        clientSecret: string;
+        id?: string | null;
+      }[]
+    | null;
+  allowRegistration?: boolean | null;
+  requireEmailVerification?: boolean | null;
+  passwordMinLength?: number | null;
+  passwordComplexity?: {
+    requireUppercase?: boolean | null;
+    requireLowercase?: boolean | null;
+    requireNumbers?: boolean | null;
+    requireSpecialCharacters?: boolean | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "auth-settings_select".
+ */
+export interface AuthSettingsSelect<T extends boolean = true> {
+  authProviders?:
+    | T
+    | {
+        provider?: T;
+        clientId?: T;
+        clientSecret?: T;
+        id?: T;
+      };
+  allowRegistration?: T;
+  requireEmailVerification?: T;
+  passwordMinLength?: T;
+  passwordComplexity?:
+    | T
+    | {
+        requireUppercase?: T;
+        requireLowercase?: T;
+        requireNumbers?: T;
+        requireSpecialCharacters?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

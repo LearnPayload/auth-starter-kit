@@ -2,7 +2,6 @@
 import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
 import { resendAdapter } from "@payloadcms/email-resend";
 export const emailConfig = async () => {
-  console.log("process.env.MAIL_MAILER", process.env.MAIL_MAILER);
   if (process.env.MAIL_MAILER === "resend") {
     return resendAdapter({
       defaultFromAddress: "onboarding@resend.dev",

@@ -15,7 +15,7 @@ export const WithUser = () => {
         email={user?.email}
         label="Resend one-time password"
         onSuccess={(args) => {
-          console.log({ args });
+          // console.log({ args });
         }}
       />
     </div>
