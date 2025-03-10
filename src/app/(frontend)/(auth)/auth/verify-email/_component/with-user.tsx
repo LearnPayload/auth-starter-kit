@@ -1,8 +1,8 @@
 "use client";
 
-import { RequestOneTimePasswordButton } from "@/app/(authkit)/_form/request-otp/request-otp-button";
-import { SubmitOneTimePasswordForm } from "@/app/(authkit)/_form/submit-otp/submit-otp-form";
-import { useAuth } from "@/app/(authkit)/_providers/auth-provider";
+import { RequestOneTimePasswordButton } from "@/authkit/forms/request-otp/request-otp-button";
+import { SubmitOneTimePasswordForm } from "@/authkit/forms/submit-otp/submit-otp-form";
+import { useAuth } from "@/authkit/providers/auth-provider";
 
 export const WithUser = () => {
   const { user } = useAuth();

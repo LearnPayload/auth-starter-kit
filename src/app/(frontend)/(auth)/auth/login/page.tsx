@@ -1,3 +1,5 @@
+import AppLogoIcon from "@/authkit/components/app-logo-icon";
+import { StandardLoginForm } from "@/authkit/forms/standard-login/standard-login-form";
 import {
   Card,
   CardContent,
@@ -5,9 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { StandardLoginForm } from "../../_form/standard-login/standard-login-form";
 import Link from "next/link";
-import AppLogoIcon from "../../_components/app-logo-icon";
 
 export const metadata = {
   title: "Sign in | Payload Auth Starter",

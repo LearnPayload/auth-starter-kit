@@ -6,9 +6,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import AppLogoIcon from "../../_components/app-logo-icon";
 import { WithUser } from "./_component/with-user";
-import { AuthProviderServer } from "../../_providers/auth-provider-server";
+import { AuthProviderServer } from "@/authkit/providers/auth-provider-server";
+import AppLogoIcon from "@/authkit/components/app-logo-icon";
 
 export const metadata = {
   title: "Create your account | Payload Auth Starter",

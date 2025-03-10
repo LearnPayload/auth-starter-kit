@@ -8,9 +8,9 @@ import { fileURLToPath } from "url";
 import sharp from "sharp";
 
 import { Media } from "./config/collections/Media";
-import { Users } from "./app/(authkit)/_collections/users/config";
-import { emailConfig } from "./app/(authkit)/_config/email/config";
-import AuthGlobalConfig from "./app/(authkit)/_config/globals";
+import { Users } from "./authkit/collections/users/config";
+import { emailConfig } from "./authkit/config/email/config";
+import AuthGlobalConfig from "./authkit/config/globals";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);

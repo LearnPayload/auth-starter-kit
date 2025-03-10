@@ -1,4 +1,5 @@
-import { CreateAccountForm } from "../../_form/create-account/form";
+import AppLogoIcon from "@/authkit/components/app-logo-icon";
+import { CreateAccountForm } from "@/authkit/forms/create-account/form";
 import {
   Card,
   CardContent,
@@ -7,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import AppLogoIcon from "../../_components/app-logo-icon";
 
 export const metadata = {
   title: "Create your account | Payload Auth Starter",

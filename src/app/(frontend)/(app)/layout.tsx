@@ -1,4 +1,4 @@
-import { AuthProviderServer } from "@/app/(authkit)/_providers/auth-provider-server";
+import { AuthProviderServer } from "@/authkit/providers/auth-provider-server";
 import { AppSidebar } from "@/components/app-sidebar";
 import {
   Breadcrumb,

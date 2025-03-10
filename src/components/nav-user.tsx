@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-  SettingsIcon,
-  UserIcon,
-} from "lucide-react";
+import { ChevronsUpDown, SettingsIcon, UserIcon } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -26,9 +19,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { User } from "@/payload-types";
-import { LogoutButton } from "@/app/(authkit)/_form/logout/logout-button";
 import { getInitials } from "@/lib/utils";
 import { RouteLink } from "./route-link";
+import { LogoutButton } from "@/authkit/forms/logout/logout-button";
 
 export function NavUser({ user }: { user: User }) {
   const { isMobile } = useSidebar();

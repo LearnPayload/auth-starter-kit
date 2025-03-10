@@ -10,7 +10,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { RouteLink } from "./route-link";
-import { useAuth } from "@/app/(authkit)/_providers/auth-provider";
+import { useAuth } from "@/authkit/providers/auth-provider";
 
 export function NavAdmin() {
   const { user } = useAuth();

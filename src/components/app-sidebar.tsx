@@ -12,10 +12,10 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import AppLogo from "@/app/(authkit)/_components/app-logo";
-import { useAuth } from "@/app/(authkit)/_providers/auth-provider";
 import { RouteLink } from "./route-link";
 import { NavAdmin } from "./nav-admin";
+import { useAuth } from "@/authkit/providers/auth-provider";
+import AppLogo from "@/authkit/components/app-logo";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user } = useAuth();
