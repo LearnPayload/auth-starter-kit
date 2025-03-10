@@ -1,25 +1,15 @@
 "use client";
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import {
-  FormEvent,
-  FormEventHandler,
-  HTMLAttributes,
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 
-export default function AppearanceToggleTab({
-  className = "",
-  ...props
-}: HTMLAttributes<HTMLDivElement>) {
+export default function AppearanceToggleTab() {
   const [mounted, setMounted] = useState(false);
   const { setTheme, theme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
-    console.log({ theme });
   }, []);
 
   if (!mounted) {
