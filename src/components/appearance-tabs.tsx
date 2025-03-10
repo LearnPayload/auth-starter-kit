@@ -1,47 +1,62 @@
 "use client";
+import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
+import { useTheme } from "next-themes";
 import {
-  Appearance,
-  useAppearance,
-} from "@/authkit/providers/appearance-provider";
-import { cn } from "@/lib/utils";
-import { LucideIcon, Monitor, Moon, Sun } from "lucide-react";
-import { HTMLAttributes } from "react";
+  FormEvent,
+  FormEventHandler,
+  HTMLAttributes,
+  useEffect,
+  useState,
+} from "react";
+import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 
 export default function AppearanceToggleTab({
   className = "",
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
-  const { appearance, updateAppearance } = useAppearance();
+  const [mounted, setMounted] = useState(false);
+  const { setTheme, theme } = useTheme();
 
-  const tabs: { value: Appearance; icon: LucideIcon; label: string }[] = [
-    { value: "light", icon: Sun, label: "Light" },
-    { value: "dark", icon: Moon, label: "Dark" },
-    { value: "system", icon: Monitor, label: "System" },
-  ];
+  useEffect(() => {
+    setMounted(true);
+    console.log({ theme });
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
-    <div
-      className={cn(
-        "inline-flex gap-1 rounded-lg bg-neutral-100 p-1 dark:bg-neutral-800",
-        className,
-      )}
-      {...props}
-    >
-      {tabs.map(({ value, icon: Icon, label }) => (
-        <button
-          key={value}
-          onClick={() => updateAppearance(value)}
-          className={cn(
-            "flex items-center rounded-md px-3.5 py-1.5 transition-colors",
-            appearance === value
-              ? "bg-white shadow-xs dark:bg-neutral-700 dark:text-neutral-100"
-              : "text-neutral-500 hover:bg-neutral-200/60 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-700/60",
-          )}
+    <div>
+      <ToggleGroup variant={"outline"} value={theme ?? "system"} type="single">
+        <ToggleGroupItem
+          value="light"
+          aria-label="Light theme"
+          onClick={() => setTheme("light")}
+          className="px-4"
         >
-          <Icon className="-ml-1 h-4 w-4" />
-          <span className="ml-1.5 text-sm">{label}</span>
-        </button>
-      ))}
+          <SunIcon className="h-4 w-4" />
+          Light
+        </ToggleGroupItem>
+        <ToggleGroupItem
+          value="dark"
+          aria-label="Dark theme"
+          onClick={() => setTheme("dark")}
+          className="px-4"
+        >
+          <MoonIcon className="h-4 w-4" />
+          Dark
+        </ToggleGroupItem>
+        <ToggleGroupItem
+          value="system"
+          aria-label="System"
+          onClick={() => setTheme("system")}
+          className="px-4"
+        >
+          <MonitorIcon className="h-4 w-4" />
+          System
+        </ToggleGroupItem>
+      </ToggleGroup>
     </div>
   );
 }

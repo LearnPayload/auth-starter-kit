@@ -2,7 +2,7 @@ import React from "react";
 import { Instrument_Sans } from "next/font/google";
 import "./styles.css";
 import { AuthProviderServer } from "@/authkit/providers/auth-provider-server";
-import { AppearanceProvider } from "@/authkit/providers/appearance-provider";
+import { ThemeProvider } from "@/authkit/providers/theme-provider";
 
 const instrument = Instrument_Sans({
   weight: ["600", "700"],
@@ -21,14 +21,19 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props;
 
   return (
-    <AppearanceProvider>
-      <AuthProviderServer>
-        <html lang="en">
-          <body className={instrument.variable}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={instrument.variable}>
+        <AuthProviderServer>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
             <main>{children}</main>
-          </body>
-        </html>
-      </AuthProviderServer>
-    </AppearanceProvider>
+          </ThemeProvider>
+        </AuthProviderServer>
+      </body>
+    </html>
   );
 }

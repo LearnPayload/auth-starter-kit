@@ -1,6 +1,4 @@
-import { UserProfileForm } from "@/authkit/forms/user-profile/user-profile-form";
 import AppearanceToggleTab from "@/components/appearance-tabs";
-import DeleteUser from "@/components/delete-user";
 import HeadingSmall from "@/components/heading-small";
 
 export default function Appearance() {
