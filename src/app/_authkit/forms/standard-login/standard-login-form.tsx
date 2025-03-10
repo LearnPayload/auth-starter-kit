@@ -19,9 +19,9 @@ import { RequestOneTimePasswordButton } from "../request-otp/request-otp-button"
 import { cn } from "@/lib/utils";
 import { SubmitOneTimePasswordForm } from "../submit-otp/submit-otp-form";
 import { useRouter } from "next/navigation";
-import { GoogleIcon } from "@/authkit/components/icons/google";
-import TextLink from "@/authkit/components/text-link";
-import { useAuthSettings } from "@/authkit/providers/auth-settings-provider";
+import { GoogleIcon } from "@/app/_authkit/components/icons/google";
+import TextLink from "@/app/_authkit/components/text-link";
+import { useAuthSettings } from "@/app/_authkit/providers/auth-settings-provider";
 import {
   Card,
   CardContent,
@@ -30,7 +30,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { RouteLink } from "@/components/route-link";
-import AppLogoIcon from "@/authkit/components/app-logo-icon";
+import AppLogoIcon from "@/app/_authkit/components/app-logo-icon";
 
 type LoginStep = "init" | "password" | "otp";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Instrument_Sans } from "next/font/google";
 import "./styles.css";
-import { AuthProviderServer } from "@/authkit/providers/auth-provider-server";
+import { AuthProviderServer } from "@/app/_authkit/providers/auth-provider-server";
 
 const instrument = Instrument_Sans({
   weight: ["600", "700"],

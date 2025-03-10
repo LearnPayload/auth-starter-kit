@@ -1,7 +1,7 @@
 "use client";
 
-import { GithubIcon } from "@/authkit/components/icons/github";
-import { useAuth } from "@/authkit/providers/auth-provider";
+import { GithubIcon } from "@/app/_authkit/components/icons/github";
+import { useAuth } from "@/app/_authkit/providers/auth-provider";
 import route from "@/lib/route";
 import Link from "next/link";
 

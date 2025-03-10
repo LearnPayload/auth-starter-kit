@@ -21,9 +21,9 @@ import {
 import { User } from "@/payload-types";
 import { getInitials } from "@/lib/utils";
 import { RouteLink } from "./route-link";
-import { LogoutButton } from "@/authkit/forms/logout/logout-button";
-import { PayloadIcon } from "@/authkit/components/icons/payload";
-import { UserInfo } from "@/authkit/components/user-info";
+import { LogoutButton } from "@/app/_authkit/forms/logout/logout-button";
+import { PayloadIcon } from "@/app/_authkit/components/icons/payload";
+import { UserInfo } from "@/app/_authkit/components/user-info";
 
 export function NavUser({ user }: { user: User }) {
   const { isMobile } = useSidebar();

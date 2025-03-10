@@ -2,7 +2,7 @@ import { extractJWT, type PayloadRequest } from "payload";
 
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { getPayload } from "@/authkit/services/payload";
+import { getPayload } from "@/app/_authkit/services/payload";
 import { jwtVerify } from "jose";
 
 type JWTToken = {

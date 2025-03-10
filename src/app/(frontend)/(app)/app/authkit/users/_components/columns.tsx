@@ -1,6 +1,6 @@
 "use client";
 
-import { UserInfo } from "@/authkit/components/user-info";
+import { UserInfo } from "@/app/_authkit/components/user-info";
 import { User } from "@/payload-types";
 import { ColumnDef } from "@tanstack/react-table";
 

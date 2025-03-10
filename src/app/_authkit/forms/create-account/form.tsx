@@ -13,9 +13,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useCreateAccountForm } from "./use-form";
-import { GoogleIcon } from "@/authkit/components/icons/google";
-import { GithubIcon } from "@/authkit/components/icons/github";
-import TextLink from "@/authkit/components/text-link";
+import { GoogleIcon } from "@/app/_authkit/components/icons/google";
+import { GithubIcon } from "@/app/_authkit/components/icons/github";
+import TextLink from "@/app/_authkit/components/text-link";
 export const CreateAccountForm = () => {
   const {
     form,
@@ -102,6 +102,7 @@ export const CreateAccountForm = () => {
                     />
                   </FormControl>
                   <FormMessage />
+
                   {rootError && (
                     <div className="text-destructive text-sm text-center">
                       {rootError.message}

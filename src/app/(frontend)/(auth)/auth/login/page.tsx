@@ -1,4 +1,4 @@
-import { StandardLoginForm } from "@/authkit/forms/standard-login/standard-login-form";
+import { StandardLoginForm } from "@/app/_authkit/forms/standard-login/standard-login-form";
 
 export const metadata = {
   title: "Sign in | Payload Auth Starter",

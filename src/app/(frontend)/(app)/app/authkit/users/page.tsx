@@ -1,7 +1,7 @@
 import { User } from "@/payload-types";
 import { columns } from "./_components/columns";
 import { DataTable } from "./_components/data-table";
-import { getPayload } from "@/authkit/services/payload";
+import { getPayload } from "@/app/_authkit/services/payload";
 
 async function getData(): Promise<User[]> {
   // Fetch data from your API here.

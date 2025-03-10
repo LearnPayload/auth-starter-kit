@@ -1,4 +1,4 @@
-import { AuthSettingsProviderServer } from "@/authkit/providers/auth-settings-provider-server";
+import { AuthSettingsProviderServer } from "@/app/_authkit/providers/auth-settings-provider-server";
 
 export default function AuthLayout(props: { children: React.ReactNode }) {
   const { children } = props;

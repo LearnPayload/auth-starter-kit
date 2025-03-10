@@ -1,4 +1,4 @@
-import { authMiddleware } from "@/authkit/lib/middleware";
+import { authMiddleware } from "@/app/_authkit/lib/middleware";
 
 export default authMiddleware();
 
