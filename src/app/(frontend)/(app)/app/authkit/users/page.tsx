@@ -1,17 +1,21 @@
-import { Payment, columns } from "./_components/columns";
+import { User } from "@/payload-types";
+import { columns } from "./_components/columns";
 import { DataTable } from "./_components/data-table";
+import { getPayload } from "@/authkit/services/payload";
 
-async function getData(): Promise<Payment[]> {
+async function getData(): Promise<User[]> {
   // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    // ...
-  ];
+  const payload = await getPayload();
+  const result = await payload.find({
+    collection: "users",
+    depth: 2,
+  });
+
+  if (!result.totalDocs) {
+    return [];
+  }
+
+  return result.docs;
 }
 
 export default async function Page() {

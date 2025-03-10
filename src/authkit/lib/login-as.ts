@@ -27,4 +27,12 @@ export const loginAs = async (user: User) => {
   });
 
   await setAuthCookie(token);
+
+  await payload.update({
+    collection: "users",
+    id: user.id,
+    data: {
+      last_signed_in: new Date().toISOString(),
+    },
+  });
 };

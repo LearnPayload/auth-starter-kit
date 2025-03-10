@@ -1,27 +1,37 @@
 "use client";
 
+import { UserInfo } from "@/authkit/components/user-info";
+import { User } from "@/payload-types";
 import { ColumnDef } from "@tanstack/react-table";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
+export const columns: ColumnDef<User>[] = [
+  {
+    accessorKey: "user",
+    header: "User",
+    cell: ({ row }) => <UserInfo user={row.original} />,
+  },
+  {
+    accessorKey: "role",
+    header: "Role",
+  },
+  {
+    accessorKey: "_verified",
+    header: "Verified",
+  },
 
-export const columns: ColumnDef<Payment>[] = [
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "last_signed_in",
+    header: "Last signed in",
+    cell: ({ row }) =>
+      row.getValue("last_signed_in") ? (
+        new Date(row.getValue("last_signed_in")).toLocaleString()
+      ) : (
+        <div className="text-xs opacity-45 text-center w-32">&mdash;</div>
+      ),
   },
   {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount",
+    accessorKey: "createdAt",
+    header: "Created",
+    cell: ({ row }) => new Date(row.getValue("createdAt")).toLocaleString(),
   },
 ];

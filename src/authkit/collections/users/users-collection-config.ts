@@ -1,6 +1,7 @@
 import type { CollectionConfig } from "payload";
-import { randomBytes } from "node:crypto";
 import { oAuthCallbackEndpoint } from "./endpoints";
+import { generateUserId } from "./generate-user-id";
+import { afterLogin } from "./hooks";
 
 export const Users: CollectionConfig = {
   slug: "users",
@@ -16,6 +17,9 @@ export const Users: CollectionConfig = {
   auth: {
     verify: false, // Disable email verification to create a custom flow
   },
+  hooks: {
+    afterLogin: [afterLogin],
+  },
   endpoints: [oAuthCallbackEndpoint],
   fields: [
     {
@@ -26,9 +30,7 @@ export const Users: CollectionConfig = {
       admin: {
         disabled: true,
       },
-      defaultValue: () => {
-        return randomBytes(25).toString("hex");
-      },
+      defaultValue: generateUserId,
     },
     {
       name: "name",
@@ -78,6 +80,32 @@ export const Users: CollectionConfig = {
       admin: {
         disabled: true,
       },
+    },
+
+    {
+      name: "last_signed_in",
+      type: "date",
+      required: false,
+    },
+
+    {
+      name: "email_addresses",
+      label: "Email Addresses",
+      type: "array",
+      required: false,
+      admin: {},
+      fields: [
+        {
+          name: "email",
+          type: "email",
+          required: true,
+        },
+        {
+          name: "verified",
+          type: "checkbox",
+          required: false,
+        },
+      ],
     },
   ],
 };

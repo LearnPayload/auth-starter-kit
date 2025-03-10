@@ -8,9 +8,10 @@ import { fileURLToPath } from "url";
 import sharp from "sharp";
 
 import { Media } from "./config/collections/Media";
-import { Users } from "./authkit/collections/users/config";
+import { Users } from "./authkit/collections/users/users-collection-config";
 import { emailConfig } from "./authkit/config/email/config";
 import AuthGlobalConfig from "./authkit/config/globals";
+import { env } from "./env.mjs";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -24,16 +25,16 @@ export default buildConfig({
   },
   email: await emailConfig(),
   globals: [AuthGlobalConfig],
-  serverURL: process.env.NEXT_PUBLIC_VERCEL_URL,
+  serverURL: env.NEXT_PUBLIC_VERCEL_URL,
   collections: [Users, Media],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || "",
+  secret: env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || "",
+      connectionString: env.DATABASE_URL || "",
     },
   }),
   sharp,

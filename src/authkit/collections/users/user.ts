@@ -19,6 +19,10 @@ export class User {
     return { ...this.data, collection: this.collection } as TypedUser;
   };
 
+  get id() {
+    return this.data.id;
+  }
+
   get email() {
     return this.data.email;
   }

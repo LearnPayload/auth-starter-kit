@@ -128,6 +128,14 @@ export interface User {
   _verified?: boolean | null;
   otp?: string | null;
   otp_expiration?: string | null;
+  last_signed_in?: string | null;
+  email_addresses?:
+    | {
+        email: string;
+        verified?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -227,6 +235,14 @@ export interface UsersSelect<T extends boolean = true> {
   _verified?: T;
   otp?: T;
   otp_expiration?: T;
+  last_signed_in?: T;
+  email_addresses?:
+    | T
+    | {
+        email?: T;
+        verified?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   email?: T;

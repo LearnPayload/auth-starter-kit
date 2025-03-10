@@ -4,6 +4,7 @@ import { AUTH_CONFIG } from "../../lib/config";
 import { randomBytes } from "node:crypto";
 import { User } from "./user";
 import { GithubUserProfile } from "../../forms/github-login/types";
+import { env } from "@/env.mjs";
 
 export const oAuthCallbackEndpoint: Endpoint = {
   path: "/auth/:provider/callback",
@@ -20,8 +21,8 @@ export const oAuthCallbackEndpoint: Endpoint = {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          client_id: process.env.GITHUB_CLIENT_ID,
-          client_secret: process.env.GITHUB_CLIENT_SECRET,
+          client_id: env.GITHUB_CLIENT_ID,
+          client_secret: env.GITHUB_CLIENT_SECRET,
           code,
         }),
       },

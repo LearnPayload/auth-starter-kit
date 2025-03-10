@@ -23,6 +23,7 @@ import { getInitials } from "@/lib/utils";
 import { RouteLink } from "./route-link";
 import { LogoutButton } from "@/authkit/forms/logout/logout-button";
 import { PayloadIcon } from "@/authkit/components/icons/payload";
+import { UserInfo } from "@/authkit/components/user-info";
 
 export function NavUser({ user }: { user: User }) {
   const { isMobile } = useSidebar();
@@ -36,16 +37,7 @@ export function NavUser({ user }: { user: User }) {
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user?.avatar ?? ""} alt={user?.name ?? ""} />
-                <AvatarFallback className="rounded-lg">
-                  {user?.name ? getInitials(user.name) : <UserIcon size={20} />}
-                </AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
-              </div>
+              <UserInfo user={user} />
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
