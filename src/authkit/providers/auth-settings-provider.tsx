@@ -5,6 +5,7 @@ import { createContext, ReactNode, useContext } from "react";
 
 type AuthSettingsContextType = {
   settings: AuthSetting;
+  isDraftMode: boolean;
 };
 
 const AuthSettingsContext = createContext<AuthSettingsContextType | undefined>(
@@ -14,12 +15,14 @@ const AuthSettingsContext = createContext<AuthSettingsContextType | undefined>(
 export const AuthSettingsProvider = ({
   children,
   settings,
+  isDraftMode,
 }: {
   children: ReactNode;
   settings: AuthSetting;
+  isDraftMode: boolean;
 }) => {
   return (
-    <AuthSettingsContext.Provider value={{ settings }}>
+    <AuthSettingsContext.Provider value={{ settings, isDraftMode }}>
       {children}
     </AuthSettingsContext.Provider>
   );

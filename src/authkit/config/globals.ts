@@ -4,13 +4,15 @@ const AuthGlobalConfig: GlobalConfig = {
   slug: "auth-settings",
   label: "Auth Settings",
   admin: {
-    livePreview: {
-      url: ({ req }) => {
-        req.payload.logger.info(
-          `Live preview URL: ${process.env.NEXT_PUBLIC_VERCEL_URL}/live-preview/login`,
-        );
-        return `${process.env.NEXT_PUBLIC_VERCEL_URL}/live-preview/login`;
-      },
+    preview: (_, req) => {
+      const token = req.token;
+
+      const encodedParams = new URLSearchParams({
+        path: `/auth/login`,
+        previewSecret: token || "",
+      });
+
+      return `/preview?${encodedParams.toString()}`;
     },
   },
   versions: {

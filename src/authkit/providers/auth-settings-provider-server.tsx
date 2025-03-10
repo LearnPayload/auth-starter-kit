@@ -1,3 +1,4 @@
+import { draftMode } from "next/headers";
 import { getAuthSettings } from "../services/get-auth-settings";
 import { AuthSettingsProvider } from "./auth-settings-provider";
 
@@ -7,10 +8,13 @@ export async function AuthSettingsProviderServer({
   children: React.ReactNode;
 }) {
   // Fetch user data server-side
-  const settings = await getAuthSettings();
+  const { isEnabled: isDraftMode } = await draftMode();
+  const settings = await getAuthSettings({ isDraftMode });
 
   // Pass the initial user to the client UserProvider component
   return (
-    <AuthSettingsProvider settings={settings}>{children}</AuthSettingsProvider>
+    <AuthSettingsProvider isDraftMode={isDraftMode} settings={settings}>
+      {children}
+    </AuthSettingsProvider>
   );
 }

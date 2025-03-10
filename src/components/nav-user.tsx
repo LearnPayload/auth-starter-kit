@@ -22,6 +22,7 @@ import { User } from "@/payload-types";
 import { getInitials } from "@/lib/utils";
 import { RouteLink } from "./route-link";
 import { LogoutButton } from "@/authkit/forms/logout/logout-button";
+import { PayloadIcon } from "@/authkit/components/icons/payload";
 
 export function NavUser({ user }: { user: User }) {
   const { isMobile } = useSidebar();
@@ -78,6 +79,16 @@ export function NavUser({ user }: { user: User }) {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
+            {user.role === "admin" && (
+              <DropdownMenuGroup>
+                <DropdownMenuItem asChild>
+                  <RouteLink to="payload.admin">
+                    <PayloadIcon />
+                    Payload Admin
+                  </RouteLink>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            )}
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
                 <RouteLink to="account.settings">

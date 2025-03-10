@@ -19,6 +19,9 @@ const routes = {
   "authkit.users": "/app/authkit/users",
   "authkit.orgs": "/app/authkit/organizations",
   "authkit.config": "/app/authkit/configure",
+
+  // payload
+  "payload.admin": "/admin",
 } as const;
 
 export type Route = keyof typeof routes;

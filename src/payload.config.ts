@@ -24,7 +24,7 @@ export default buildConfig({
   },
   email: await emailConfig(),
   globals: [AuthGlobalConfig],
-  serverURL: "http://localhost:2222",
+  serverURL: process.env.NEXT_PUBLIC_VERCEL_URL,
   collections: [Users, Media],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
