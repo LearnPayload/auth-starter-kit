@@ -5,6 +5,7 @@ import {
   Bell,
   ChevronsUpDown,
   CreditCard,
+  SettingsIcon,
   UserIcon,
 } from "lucide-react";
 
@@ -27,6 +28,7 @@ import {
 import { User } from "@/payload-types";
 import { LogoutButton } from "@/app/(authkit)/_form/logout/logout-button";
 import { getInitials } from "@/lib/utils";
+import { RouteLink } from "./route-link";
 
 export function NavUser({ user }: { user: User }) {
   const { isMobile } = useSidebar();
@@ -84,17 +86,11 @@ export function NavUser({ user }: { user: User }) {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell />
-                Notifications
+              <DropdownMenuItem asChild>
+                <RouteLink to="account.settings">
+                  <SettingsIcon />
+                  Settings
+                </RouteLink>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

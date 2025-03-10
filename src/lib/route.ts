@@ -1,10 +1,18 @@
 import memoize from "memoize";
 const routes = {
+  // marketing pages
   home: "/",
+
+  // auth pages
   login: "/auth/login",
   register: "/auth/register",
   "password.request": "/auth/password/request",
+
+  // main app
   "app.dashboard": "/app/dashboard",
+
+  // user account
+  "account.settings": "/account/settings",
 
   // authkitapp/
   "authkit.overview": "/app/authkit",
