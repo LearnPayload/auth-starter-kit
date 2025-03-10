@@ -1,7 +1,7 @@
 "use client";
 
 import { AuthSetting } from "@/payload-types";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext } from "react";
 
 type AuthSettingsContextType = {
   settings: AuthSetting;

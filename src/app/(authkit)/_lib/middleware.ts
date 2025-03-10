@@ -79,11 +79,7 @@ export const authMiddleware: AuthMiddleWareFunction =
       );
     }
 
-    if (
-      isPublicRoute(request.url) &&
-      !searchParams.has("live_preview") &&
-      user
-    ) {
+    if (isPublicRoute(request.url) && user) {
       console.log("redirecting to dashboard");
       return NextResponse.redirect(
         new URL(AUTH_CONFIG.redirectAfterUserLogin, baseUrl.origin),

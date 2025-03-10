@@ -5,14 +5,10 @@ import { User } from "../../_collections/users/user";
 import { actionClient } from "../../_lib/safe-action";
 import { otpLoginSchema } from "./validation";
 import { loginAs } from "../../_lib/login-as";
-import { redirect } from "next/navigation";
-import { AUTH_CONFIG } from "../../_lib/config";
 
 export const submitOneTimePasswordAction = actionClient
   .schema(otpLoginSchema)
   .action(async ({ parsedInput: { email, otp } }) => {
-    // redirect(AUTH_CONFIG.redirectAfterLogin);
-
     const user = await User.findFirst({
       email: { equals: email },
       otp: { equals: otp },

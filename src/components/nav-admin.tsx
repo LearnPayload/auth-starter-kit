@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutGrid } from "lucide-react";
+import { BoxesIcon, ChartAreaIcon, Users2Icon, WrenchIcon } from "lucide-react";
 
 import {
   SidebarGroup,
@@ -19,19 +19,35 @@ export function NavAdmin() {
   }
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Organizations</SidebarGroupLabel>
+      <SidebarGroupLabel>AuthKit Admin</SidebarGroupLabel>
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton asChild>
-            <RouteLink to="authkit.settings" activeClassName="bg-primary/10">
-              <LayoutGrid className="w-6 h-6 shrink-0" />
-              <span>Settings</span>
+            <RouteLink
+              exact
+              to="authkit.overview"
+              activeClassName="bg-primary/10"
+            >
+              <ChartAreaIcon className="w-6 h-6 shrink-0" />
+              <span>Overview</span>
             </RouteLink>
           </SidebarMenuButton>
           <SidebarMenuButton asChild>
-            <RouteLink to="authkit.settings" activeClassName="bg-primary/10">
-              <LayoutGrid className="w-6 h-6 shrink-0" />
-              <span>Settings</span>
+            <RouteLink to="authkit.users" activeClassName="bg-primary/10">
+              <Users2Icon className="w-6 h-6 shrink-0" />
+              <span>Users</span>
+            </RouteLink>
+          </SidebarMenuButton>
+          <SidebarMenuButton asChild>
+            <RouteLink to="authkit.orgs" activeClassName="bg-primary/10">
+              <BoxesIcon className="w-6 h-6 shrink-0" />
+              <span>Organizations</span>
+            </RouteLink>
+          </SidebarMenuButton>
+          <SidebarMenuButton asChild>
+            <RouteLink to="authkit.config" activeClassName="bg-primary/10">
+              <WrenchIcon className="w-6 h-6 shrink-0" />
+              <span>Configure</span>
             </RouteLink>
           </SidebarMenuButton>
         </SidebarMenuItem>

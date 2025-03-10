@@ -4,11 +4,13 @@ const routes = {
   login: "/auth/login",
   register: "/auth/register",
   "password.request": "/auth/password/request",
+  "app.dashboard": "/app/dashboard",
 
-  // authkit
-  "authkit.overview": "/authkit",
-  "authkit.settings": "/authkit/settings",
-  "authkit.orgs": "/authkit/organizations",
+  // authkitapp/
+  "authkit.overview": "/app/authkit",
+  "authkit.users": "/app/authkit/users",
+  "authkit.orgs": "/app/authkit/organizations",
+  "authkit.config": "/app/authkit/configure",
 } as const;
 
 export type Route = keyof typeof routes;

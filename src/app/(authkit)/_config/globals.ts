@@ -9,7 +9,7 @@ const AuthGlobalConfig: GlobalConfig = {
         req.payload.logger.info(
           `Live preview URL: ${process.env.NEXT_PUBLIC_VERCEL_URL}/live-preview/login`,
         );
-        return `${process.env.NEXT_PUBLIC_VERCEL_URL}/auth/login?live_preview=true`;
+        return `${process.env.NEXT_PUBLIC_VERCEL_URL}/live-preview/login`;
       },
     },
   },

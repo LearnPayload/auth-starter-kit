@@ -14,11 +14,11 @@ import { RouteLink } from "./route-link";
 export function NavMain() {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>App</SidebarGroupLabel>
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton asChild>
-            <RouteLink to="authkit.overview" activeClassName="bg-primary/10">
+            <RouteLink to="app.dashboard" activeClassName="bg-primary/10">
               <LayoutGrid className="w-6 h-6 shrink-0" />
               <span>Dashboard</span>
             </RouteLink>

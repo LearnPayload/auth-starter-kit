@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import route, { Route } from "@/lib/route"; // Adjust the import path as needed
 
-interface RouteLinkProps<P = any>
+interface RouteLinkProps<P>
   extends Omit<React.ComponentProps<typeof Link>, "href"> {
   to: Route;
   params?: Partial<P>;

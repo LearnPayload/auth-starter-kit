@@ -3,7 +3,6 @@
 import { returnValidationErrors } from "next-safe-action";
 import { standardLoginSchema } from "./validation";
 import { actionClient } from "../../_lib/safe-action";
-import { redirect } from "next/navigation";
 import { getPayload } from "../../_services/payload";
 import { setAuthCookie } from "../../_lib/set-auth-cookie";
 import { AUTH_CONFIG } from "../../_lib/config";

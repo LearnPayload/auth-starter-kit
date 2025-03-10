@@ -1,18 +1,6 @@
 "use client";
 
-import * as React from "react";
-import {
-  BookOpen,
-  Bot,
-  Frame,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react";
-
 import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
 import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
@@ -24,7 +12,6 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import Link from "next/link";
 import AppLogo from "@/app/(authkit)/_components/app-logo";
 import { useAuth } from "@/app/(authkit)/_providers/auth-provider";
 import { RouteLink } from "./route-link";

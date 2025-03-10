@@ -9,6 +9,7 @@ export const createUser = async (props: CreateAccountProps) => {
     data: {
       name: props.name ?? "Guest",
       email: props.email,
+      role: "user",
       avatar:
         props.avatar ??
         `https://api.dicebear.com/9.x/bottts/png?seed=${Date.now()}`,
