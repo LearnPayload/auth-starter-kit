@@ -1,5 +1,8 @@
 "use client";
-import { Appearance, useAppearance } from "@/hooks/use-appearance";
+import {
+  Appearance,
+  useAppearance,
+} from "@/authkit/providers/appearance-provider";
 import { cn } from "@/lib/utils";
 import { LucideIcon, Monitor, Moon, Sun } from "lucide-react";
 import { HTMLAttributes } from "react";
