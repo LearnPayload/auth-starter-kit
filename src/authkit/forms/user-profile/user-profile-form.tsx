@@ -2,10 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useUserProfileForm } from "./use-user-profile-form";
-import { useAuth } from "@/app/_authkit/providers/auth-provider";
+import { useAuth } from "@/authkit/providers/auth-provider";
 import {
   Form,
   FormControl,
@@ -18,6 +17,7 @@ import { LoaderCircle } from "lucide-react";
 
 export const UserProfileForm = () => {
   const { user } = useAuth();
+  console.log("user", user);
   const {
     form,
     action: { isPending },

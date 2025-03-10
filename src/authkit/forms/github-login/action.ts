@@ -1,8 +1,8 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { actionClient } from "../../lib/safe-action";
 import { env } from "@/env.mjs";
+import { actionClient } from "@/authkit/lib/safe-action";
 
 export const githubLoginAction = actionClient.action(async () => {
   redirect(

@@ -1,4 +1,4 @@
-import { UserProfileForm } from "@/app/_authkit/forms/user-profile/user-profile-form";
+import { UserProfileForm } from "@/authkit/forms/user-profile/user-profile-form";
 import DeleteUser from "@/components/delete-user";
 import HeadingSmall from "@/components/heading-small";
 

@@ -1,5 +1,6 @@
+import route from "@/lib/route";
 import { redirect } from "next/navigation";
 
 export default async function Page() {
-  redirect("/account/settings/profile");
+  redirect(route("account.settings"));
 }

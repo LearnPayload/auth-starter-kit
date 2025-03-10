@@ -12,10 +12,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import TextLink from "@/authkit/components/text-link";
 import { useCreateAccountForm } from "./use-form";
-import { GoogleIcon } from "@/app/_authkit/components/icons/google";
-import { GithubIcon } from "@/app/_authkit/components/icons/github";
-import TextLink from "@/app/_authkit/components/text-link";
+import { GoogleIcon } from "@/authkit/components/icons/google";
+import { GithubIcon } from "@/authkit/components/icons/github";
 export const CreateAccountForm = () => {
   const {
     form,

@@ -2,10 +2,10 @@
 
 import { returnValidationErrors } from "next-safe-action";
 import { User } from "../../collections/users/user";
-import { actionClient } from "../../lib/safe-action";
 import { loginAs } from "../../lib/login-as";
 import { redirect } from "next/navigation";
 import { otpLoginSchema } from "../submit-otp/validation";
+import { actionClient } from "@/authkit/lib/safe-action";
 
 export const submitOneTimePasswordAction = actionClient
   .schema(otpLoginSchema)

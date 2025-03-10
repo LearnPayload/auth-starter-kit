@@ -1,9 +1,9 @@
 "use server";
 
-import { actionClient } from "@/app/_authkit/lib/safe-action";
+import { actionClient } from "@/authkit/lib/safe-action";
 import { userProfileSchema } from "./validation";
-import { getPayload } from "@/app/_authkit/services/payload";
-import { getAuth } from "@/app/_authkit/services/get-auth";
+import { getPayload } from "@/authkit/services/payload";
+import { getAuth } from "@/authkit/services/get-auth";
 import { returnValidationErrors } from "next-safe-action";
 
 export const updateUserProfile = actionClient

@@ -12,7 +12,9 @@ const routes = {
   "app.dashboard": "/app/dashboard",
 
   // user account
-  "account.settings": "/account/settings",
+  "account.settings": "/app/account/settings/profile",
+  "account.settings.security": "/app/account/settings/security",
+  "account.settings.appearance": "/app/account/settings/appearance",
 
   // authkitapp/
   "authkit.overview": "/app/authkit",
