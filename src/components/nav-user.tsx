@@ -26,7 +26,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { User } from "@/payload-types";
-import { LogoutButton } from "@/app/(auth)/_form/logout/logout-button";
+import { LogoutButton } from "@/app/(authkit)/_form/logout/logout-button";
 import { getInitials } from "@/lib/utils";
 
 export function NavUser({ user }: { user: User }) {

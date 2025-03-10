@@ -1,10 +1,14 @@
+import memoize from "memoize";
 const routes = {
   home: "/",
   login: "/auth/login",
   register: "/auth/register",
-  property: "/property/:id",
-  dashboard: "/dashboard",
   "password.request": "/auth/password/request",
+
+  // authkit
+  "authkit.overview": "/authkit",
+  "authkit.settings": "/authkit/settings",
+  "authkit.orgs": "/authkit/organizations",
 } as const;
 
 export type Route = keyof typeof routes;
@@ -27,17 +31,11 @@ function parseParams<P>(route: Route, params?: P): string {
 }
 
 function routeFn<P>(route: Route, params?: Partial<P>): string {
+  console.log("routeFn", route, params);
   return parseParams(route, params);
 }
 
-// memoize the route function
-const route = new Proxy(routeFn, {
-  get(target, prop) {
-    if (prop === "toString") {
-      return () => "route";
-    }
-    return Reflect.get(target, prop);
-  },
-});
+// optimize with memoization for repeated calls to the same route
+const route = memoize(routeFn);
 
 export default route;

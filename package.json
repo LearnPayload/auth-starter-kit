@@ -22,6 +22,7 @@
     "@payloadcms/db-postgres": "latest",
     "@payloadcms/email-nodemailer": "latest",
     "@payloadcms/email-resend": "^3.25.0",
+    "@payloadcms/live-preview-react": "^3.27.0",
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
@@ -39,6 +40,7 @@
     "@react-email/components": "^0.0.33",
     "@react-email/render": "^1.0.5",
     "@tailwindcss/postcss": "^4.0.9",
+    "brandi": "^5.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
@@ -46,6 +48,7 @@
     "input-otp": "^1.4.2",
     "jose": "^6.0.8",
     "lucide-react": "^0.476.0",
+    "memoize": "^10.1.0",
     "next": "15.1.5",
     "next-safe-action": "^7.10.4",
     "payload": "latest",
@@ -57,6 +60,7 @@
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.9",
     "tailwindcss-animate": "^1.0.7",
+    "typed-inject": "^5.0.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
@@ -75,7 +79,11 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "esbuild",
       "sharp"
+    ],
+    "ignoredBuiltDependencies": [
+      "esbuild"
     ]
   }
 }

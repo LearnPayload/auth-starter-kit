@@ -293,23 +293,13 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface AuthSetting {
   id: number;
-  authProviders?:
-    | {
-        provider: 'github' | 'google' | 'facebook';
-        clientId: string;
-        clientSecret: string;
-        id?: string | null;
-      }[]
-    | null;
-  allowRegistration?: boolean | null;
-  requireEmailVerification?: boolean | null;
-  passwordMinLength?: number | null;
-  passwordComplexity?: {
-    requireUppercase?: boolean | null;
-    requireLowercase?: boolean | null;
-    requireNumbers?: boolean | null;
-    requireSpecialCharacters?: boolean | null;
-  };
+  enable_credentials?: boolean | null;
+  enable_password_reset?: boolean | null;
+  enable_one_time_password_access?: boolean | null;
+  enable_google?: boolean | null;
+  enable_github?: boolean | null;
+  title: string;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -318,25 +308,13 @@ export interface AuthSetting {
  * via the `definition` "auth-settings_select".
  */
 export interface AuthSettingsSelect<T extends boolean = true> {
-  authProviders?:
-    | T
-    | {
-        provider?: T;
-        clientId?: T;
-        clientSecret?: T;
-        id?: T;
-      };
-  allowRegistration?: T;
-  requireEmailVerification?: T;
-  passwordMinLength?: T;
-  passwordComplexity?:
-    | T
-    | {
-        requireUppercase?: T;
-        requireLowercase?: T;
-        requireNumbers?: T;
-        requireSpecialCharacters?: T;
-      };
+  enable_credentials?: T;
+  enable_password_reset?: T;
+  enable_one_time_password_access?: T;
+  enable_google?: T;
+  enable_github?: T;
+  title?: T;
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

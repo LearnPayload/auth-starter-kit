@@ -1,7 +1,7 @@
 "use client";
 
-import { GithubIcon } from "@/app/(auth)/_components/icons/github";
-import { useAuth } from "@/app/(auth)/_providers/auth-provider";
+import { GithubIcon } from "@/app/(authkit)/_components/icons/github";
+import { useAuth } from "@/app/(authkit)/_providers/auth-provider";
 import route from "@/lib/route";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ export const HeroButtons = () => {
       {user ? (
         <Link
           className="rounded-full bg-linear-to-r from-[#49B283] via-brand to-[#49A2B2] py-2 px-6 text-base font-semibold text-slate-900 hover:from-[#56c593] hover:via-[#56c7ac] hover:to-[#58b8c9] focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#49A2B299] active:bg-sky-500 transition"
-          href={route("dashboard")}
+          href={route("authkit.overview")}
         >
           Dashboard
         </Link>
