@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { LoaderCircle, MailCheckIcon } from "lucide-react";
+import React from "react";
+import InputError from "../../components/input-error";
 import { RequestOTPSuccessArgs, useRequestOTP } from "./use-request-otp";
 import { RequestOneTimePasswordType } from "./validation";
-import InputError from "../../components/input-error";
-import React from "react";
 
 type RequestOneTimePasswordButtonProps = RequestOneTimePasswordType & {
   onSuccess: (args: RequestOTPSuccessArgs) => void;

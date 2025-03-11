@@ -1,40 +1,49 @@
-import Image from "next/image";
 import darkLogo from "@/public/logo-dark.svg";
-import Link from "next/link";
+import lightLogo from "@/public/logo-light.svg";
 import { ExternalLinkIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { HeroButtons } from "./_components/hero-buttons";
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
-      <div className="flex flex-col w-full gap-4 max-w-xl mx-auto items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
+    <div className="text-primary flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 lg:justify-center lg:p-8 dark:bg-[#0a0a0a] dark:text-white">
+      <div className="mx-auto flex w-full max-w-xl flex-col items-center justify-center gap-4 opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
         <main className="flex w-full lg:flex-row">
-          <div className="relative w-full shrink-0 overflow-hidden flex flex-col items-center justify-center">
+          <div className="relative flex w-full shrink-0 flex-col items-center justify-center overflow-hidden">
             <Image
               src={darkLogo}
               alt="Logo"
-              className="hidden shrink-0 dark:flex h-24 w-24"
+              className="hidden h-24 w-24 shrink-0 dark:flex"
               width={150}
               height={150}
             />
-            <h1 className="text-6xl font-bold tracking-tight text-white translate-y-0 opacity-100 transition-all duration-750 starting:translate-y-6 starting:opacity-0 text-center">
+
+            <Image
+              src={lightLogo}
+              alt="Logo"
+              className="flex h-24 w-24 shrink-0 dark:hidden"
+              width={150}
+              height={150}
+            />
+            <h1 className="translate-y-0 text-center text-6xl font-bold tracking-tight opacity-100 transition-all duration-750 starting:translate-y-6 starting:opacity-0">
               Payload{" "}
-              <span className="inline bg-linear-to-r from-[#49B283] via-brand to-[#49A2B2] bg-clip-text text-transparent">
+              <span className="via-brand inline bg-linear-to-r from-[#49B283] to-[#49A2B2] bg-clip-text text-transparent">
                 AuthKit
               </span>
             </h1>
           </div>
         </main>
         <div className="relative flex flex-col items-center justify-center">
-          <p className="inline text-white font-display text-2xl text-center">
+          <p className="font-display inline text-center text-2xl">
             Your complete auth starter kit for{" "}
             <Link
               href="https://payloadcms.com/"
               target="_blank"
-              className="bg-linear-to-r from-[#49B283] via-brand to-[#49A2B2] bg-clip-text text-transparent border-b border-dashed hover:border-transparent inline-flex items-center gap-1"
+              className="via-brand inline-flex items-center gap-1 border-b border-dashed bg-linear-to-r from-[#49B283] to-[#49A2B2] bg-clip-text text-transparent hover:border-transparent"
             >
               <span>Payload CMS</span>
-              <ExternalLinkIcon className="text-white -mt-2" size={12} />
+              <ExternalLinkIcon className="-mt-2" size={12} />
             </Link>
           </p>
           <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">

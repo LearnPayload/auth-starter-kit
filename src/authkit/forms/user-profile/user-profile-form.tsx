@@ -1,10 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import Link from "next/link";
-import { useUserProfileForm } from "./use-user-profile-form";
 import { useAuth } from "@/authkit/providers/auth-provider";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,7 +10,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { LoaderCircle } from "lucide-react";
+import Link from "next/link";
+import { useUserProfileForm } from "./use-user-profile-form";
 
 export const UserProfileForm = () => {
   const { user } = useAuth();
@@ -35,7 +35,7 @@ export const UserProfileForm = () => {
       <form onSubmit={handleSubmitWithAction} className="space-y-6">
         <div className="grid gap-2">
           {rootError && (
-            <div className="text-destructive dark:text-destructive-foreground text-sm text-center">
+            <div className="text-destructive dark:text-destructive-foreground text-center text-sm">
               {rootError.message}
             </div>
           )}
@@ -87,11 +87,11 @@ export const UserProfileForm = () => {
         </div>
 
         <div>
-          <p className="-mt-4 text-sm text-muted-foreground">
+          <p className="text-muted-foreground -mt-4 text-sm">
             Your email address is unverified.{" "}
             <Link
               href={""}
-              className="hover:decoration-current! text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out dark:decoration-neutral-500"
+              className="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
             >
               Click here to resend the verification email.
             </Link>

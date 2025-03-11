@@ -1,8 +1,8 @@
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
 import darkLogo from "@/public/logo-dark.svg";
 import lightLogo from "@/public/logo-light.svg";
-import { cn } from "@/lib/utils";
 
 const sizes = {
   sm: "size-12",

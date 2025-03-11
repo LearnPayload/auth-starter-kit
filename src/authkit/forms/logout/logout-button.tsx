@@ -1,9 +1,9 @@
 "use client";
 
-import { useLogoutForm } from "./use-logout-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { LoaderCircle, LogOutIcon } from "lucide-react";
+import { useLogoutForm } from "./use-logout-form";
 
 export const LogoutButton: typeof Button = ({ variant, className }) => {
   const {

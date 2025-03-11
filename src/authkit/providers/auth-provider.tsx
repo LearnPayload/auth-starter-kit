@@ -1,8 +1,8 @@
 "use client";
 
 import { User } from "@/payload-types";
-import { createContext, ReactNode, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 type AuthContextType = {
   user: User | null;

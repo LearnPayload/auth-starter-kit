@@ -1,9 +1,9 @@
 "use client";
 
+import { GithubIcon } from "@/authkit/components/icons/github";
+import { GoogleIcon } from "@/authkit/components/icons/google";
+import TextLink from "@/authkit/components/text-link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import route from "@/lib/route";
-import { ChevronRightIcon, LoaderCircle } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -12,10 +12,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import TextLink from "@/authkit/components/text-link";
+import { Input } from "@/components/ui/input";
+import route from "@/lib/route";
+import { ChevronRightIcon, LoaderCircle } from "lucide-react";
 import { useCreateAccountForm } from "./use-form";
-import { GoogleIcon } from "@/authkit/components/icons/google";
-import { GithubIcon } from "@/authkit/components/icons/github";
 export const CreateAccountForm = () => {
   const {
     form,
@@ -41,12 +41,12 @@ export const CreateAccountForm = () => {
                 <GithubIcon size="sm" /> Github
               </Button>
             </div>
-            <div className="mt-4 relative">
+            <div className="relative mt-4">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs">
-                <span className="bg-background px-2 text-muted-foreground">
+                <span className="bg-background text-muted-foreground px-2">
                   or
                 </span>
               </div>
@@ -63,7 +63,7 @@ export const CreateAccountForm = () => {
                     <FormLabel htmlFor="name">Name</FormLabel>
                     <span
                       id="email-optional"
-                      className="text-xs/6 text-gray-500 leading-none"
+                      className="text-xs/6 leading-none text-gray-500"
                     >
                       Optional
                     </span>
@@ -104,7 +104,7 @@ export const CreateAccountForm = () => {
                   <FormMessage />
 
                   {rootError && (
-                    <div className="text-destructive text-sm text-center">
+                    <div className="text-destructive text-center text-sm">
                       {rootError.message}
                     </div>
                   )}

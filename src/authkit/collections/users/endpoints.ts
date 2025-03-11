@@ -1,10 +1,10 @@
-import { Endpoint, PayloadRequest } from "payload";
-import { loginAs } from "../../lib/login-as";
-import { AUTH_CONFIG } from "../../lib/config";
-import { randomBytes } from "node:crypto";
-import { User } from "./user";
-import { GithubUserProfile } from "../../forms/github-login/types";
 import { env } from "@/env.mjs";
+import { randomBytes } from "node:crypto";
+import { Endpoint, PayloadRequest } from "payload";
+import { GithubUserProfile } from "../../forms/github-login/types";
+import { AUTH_CONFIG } from "../../lib/config";
+import { loginAs } from "../../lib/login-as";
+import { User } from "./user";
 
 export const oAuthCallbackEndpoint: Endpoint = {
   path: "/auth/:provider/callback",

@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -5,15 +6,14 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { useSubmitOneTimePasswordForm } from "./use-submit-otp-form";
-import { SubmitOneTimePasswordEmail } from "./validation";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { Button } from "@/components/ui/button";
 import { LoaderCircle } from "lucide-react";
+import { useSubmitOneTimePasswordForm } from "./use-submit-otp-form";
+import { SubmitOneTimePasswordEmail } from "./validation";
 
 type SubmitOneTimePasswordFormProps = SubmitOneTimePasswordEmail & {
   onSuccess: () => void;
@@ -32,10 +32,10 @@ export const SubmitOneTimePasswordForm = ({
   return (
     <div className="grid gap-4">
       <div className="">
-        <h3 className="font-semibold text-lg text-center">
+        <h3 className="text-center text-lg font-semibold">
           Check your email for a code
         </h3>
-        <p className="leading-relaxed text-sm opacity-80 text-center">
+        <p className="text-center text-sm leading-relaxed opacity-80">
           We&apos;ve sent a 6-character code to{" "}
           <span className="font-semibold">{form.getValues("email")}</span> The
           code expires shortly, so please enter it soon.
@@ -46,7 +46,7 @@ export const SubmitOneTimePasswordForm = ({
           control={form.control}
           name="otp"
           render={({ field }) => (
-            <FormItem className="w-full flex flex-col items-center justify-center">
+            <FormItem className="flex w-full flex-col items-center justify-center">
               <FormControl>
                 <InputOTP maxLength={6} {...field}>
                   <InputOTPGroup>

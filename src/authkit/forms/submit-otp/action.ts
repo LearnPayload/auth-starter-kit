@@ -1,10 +1,10 @@
 "use server";
 
-import { returnValidationErrors } from "next-safe-action";
-import { otpLoginSchema } from "./validation";
-import { actionClient } from "@/authkit/lib/safe-action";
 import { User } from "@/authkit/collections/users/user";
 import { loginAs } from "@/authkit/lib/login-as";
+import { actionClient } from "@/authkit/lib/safe-action";
+import { returnValidationErrors } from "next-safe-action";
+import { otpLoginSchema } from "./validation";
 
 export const submitOneTimePasswordAction = actionClient
   .schema(otpLoginSchema)

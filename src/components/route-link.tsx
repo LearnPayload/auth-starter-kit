@@ -1,9 +1,9 @@
 "use client";
 
+import route, { Route } from "@/lib/route"; // Adjust the import path as needed
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import route, { Route } from "@/lib/route"; // Adjust the import path as needed
 
 interface RouteLinkProps<P>
   extends Omit<React.ComponentProps<typeof Link>, "href"> {

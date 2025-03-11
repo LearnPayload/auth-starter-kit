@@ -1,10 +1,10 @@
 "use client";
 
+import { GithubIcon } from "@/authkit/components/icons/github";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { LoaderCircle } from "lucide-react";
 import { useGithubLogin } from "./use-github-login";
-import { GithubIcon } from "@/authkit/components/icons/github";
 
 export const GithubLogin: typeof Button = ({ variant, className }) => {
   const {

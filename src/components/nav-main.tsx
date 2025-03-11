@@ -19,7 +19,7 @@ export function NavMain() {
         <SidebarMenuItem>
           <SidebarMenuButton asChild>
             <RouteLink to="app.dashboard" activeClassName="bg-primary/10">
-              <LayoutGrid className="w-6 h-6 shrink-0" />
+              <LayoutGrid className="h-6 w-6 shrink-0" />
               <span>Dashboard</span>
             </RouteLink>
           </SidebarMenuButton>

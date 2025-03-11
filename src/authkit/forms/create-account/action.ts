@@ -1,12 +1,12 @@
 "use server";
 
+import { AUTH_CONFIG } from "@/authkit/lib/config";
+import { actionClient } from "@/authkit/lib/safe-action";
 import { returnValidationErrors } from "next-safe-action";
 import { redirect } from "next/navigation";
-import { createAccountSchema } from "./validation";
-import { loginAs } from "../../lib/login-as";
 import { User } from "../../collections/users/user";
-import { actionClient } from "@/authkit/lib/safe-action";
-import { AUTH_CONFIG } from "@/authkit/lib/config";
+import { loginAs } from "../../lib/login-as";
+import { createAccountSchema } from "./validation";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",

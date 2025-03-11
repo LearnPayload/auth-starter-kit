@@ -22,7 +22,7 @@ export default function SettingsLayout({
               size="sm"
               variant="ghost"
               asChild
-              className="text-left justify-start"
+              className="justify-start text-left"
             >
               <RouteLink
                 to={"account.settings"}
@@ -36,7 +36,7 @@ export default function SettingsLayout({
               size="sm"
               variant="ghost"
               asChild
-              className="text-left justify-start"
+              className="justify-start text-left"
             >
               <RouteLink
                 to={"account.settings.security"}
@@ -51,7 +51,7 @@ export default function SettingsLayout({
               size="sm"
               variant="ghost"
               asChild
-              className="text-left justify-start"
+              className="justify-start text-left"
             >
               <RouteLink
                 to={"account.settings.appearance"}

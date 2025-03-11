@@ -1,10 +1,10 @@
 "use client";
 
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
-import { userProfileSchema } from "./validation";
+import { z } from "zod";
 import { updateUserProfile } from "./action";
+import { userProfileSchema } from "./validation";
 
 export const useUserProfileForm = (
   defaultValues: z.infer<typeof userProfileSchema> = {

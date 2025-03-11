@@ -1,11 +1,11 @@
 "use server";
 
 import { returnValidationErrors } from "next-safe-action";
-import { standardLoginSchema } from "./validation";
-import { actionClient } from "../../lib/safe-action";
-import { getPayload } from "../../services/payload";
-import { setAuthCookie } from "../../lib/set-auth-cookie";
 import { AUTH_CONFIG } from "../../lib/config";
+import { actionClient } from "../../lib/safe-action";
+import { setAuthCookie } from "../../lib/set-auth-cookie";
+import { getPayload } from "../../services/payload";
+import { standardLoginSchema } from "./validation";
 
 const ERROR_MESSAGES: Record<string, string> = {
   Default: "An error occurred.",

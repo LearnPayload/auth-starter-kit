@@ -4,5 +4,6 @@
   "printWidth": 80,
   "semi": true,
   "tabWidth": 2,
-  "objectWrap": "preserve"
+  "objectWrap": "preserve",
+  "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-organize-imports"]
 }

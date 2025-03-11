@@ -26,7 +26,7 @@ export const columns: ColumnDef<User>[] = [
       row.getValue("last_signed_in") ? (
         new Date(row.getValue("last_signed_in")).toLocaleString()
       ) : (
-        <div className="text-xs opacity-45 text-center w-32">&mdash;</div>
+        <div className="w-32 text-center text-xs opacity-45">&mdash;</div>
       ),
   },
   {

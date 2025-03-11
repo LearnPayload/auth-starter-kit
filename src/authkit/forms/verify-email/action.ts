@@ -1,11 +1,11 @@
 "use server";
 
+import { actionClient } from "@/authkit/lib/safe-action";
 import { returnValidationErrors } from "next-safe-action";
+import { redirect } from "next/navigation";
 import { User } from "../../collections/users/user";
 import { loginAs } from "../../lib/login-as";
-import { redirect } from "next/navigation";
 import { otpLoginSchema } from "../submit-otp/validation";
-import { actionClient } from "@/authkit/lib/safe-action";
 
 export const submitOneTimePasswordAction = actionClient
   .schema(otpLoginSchema)

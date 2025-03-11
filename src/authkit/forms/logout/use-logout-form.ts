@@ -2,9 +2,9 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
+import { useAuth } from "../../providers/auth-provider";
 import { logoutAction } from "./action";
 import { logoutSchema } from "./validation";
-import { useAuth } from "../../providers/auth-provider";
 
 export const useLogoutForm = () => {
   const { logout } = useAuth();

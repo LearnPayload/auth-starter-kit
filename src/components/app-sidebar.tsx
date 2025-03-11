@@ -1,5 +1,7 @@
 "use client";
 
+import AppLogo from "@/authkit/components/app-logo";
+import { useAuth } from "@/authkit/providers/auth-provider";
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
 import {
@@ -12,10 +14,8 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { RouteLink } from "./route-link";
 import { NavAdmin } from "./nav-admin";
-import { useAuth } from "@/authkit/providers/auth-provider";
-import AppLogo from "@/authkit/components/app-logo";
+import { RouteLink } from "./route-link";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user } = useAuth();

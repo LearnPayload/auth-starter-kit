@@ -1,10 +1,10 @@
 "use client";
 
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
-import { createAccountSchema } from "./validation";
+import { z } from "zod";
 import { createAccountAction } from "./action";
+import { createAccountSchema } from "./validation";
 
 export const useCreateAccountForm = (
   defaultValues: z.infer<typeof createAccountSchema> = {

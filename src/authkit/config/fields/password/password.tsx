@@ -1,12 +1,12 @@
 "use client";
-import type { TextFieldClientComponent } from "payload";
 import { useField } from "@payloadcms/ui";
+import type { TextFieldClientComponent } from "payload";
 
 type PasswordValueType = string;
 
-import "./password.scss";
 import { EyeClosed, EyeIcon } from "lucide-react";
 import { useState } from "react";
+import "./password.scss";
 
 export const PasswordField: TextFieldClientComponent = ({ path, field }) => {
   const [showPassword, setShowPassword] = useState(false);

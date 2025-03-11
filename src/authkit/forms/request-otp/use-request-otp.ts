@@ -1,10 +1,10 @@
 "use client";
 
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
-import { requestOneTimePasswordSchema } from "./validation";
+import { z } from "zod";
 import { requestOneTimePasswordLoginAction } from "./action";
+import { requestOneTimePasswordSchema } from "./validation";
 
 export type RequestOTPSuccessArgs = {
   data?: { successful: boolean; email: string };

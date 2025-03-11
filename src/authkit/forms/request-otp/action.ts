@@ -1,10 +1,10 @@
 "use server";
 
-import { randomBytes } from "node:crypto";
-import { requestOneTimePasswordSchema } from "./validation";
-import { User } from "../../collections/users/user";
-import { returnValidationErrors } from "next-safe-action";
 import { actionClient } from "@/authkit/lib/safe-action";
+import { returnValidationErrors } from "next-safe-action";
+import { randomBytes } from "node:crypto";
+import { User } from "../../collections/users/user";
+import { requestOneTimePasswordSchema } from "./validation";
 
 export const requestOneTimePasswordLoginAction = actionClient
   .schema(requestOneTimePasswordSchema)

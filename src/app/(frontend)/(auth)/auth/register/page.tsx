@@ -16,7 +16,7 @@ export const metadata = {
 
 export default async function Register() {
   return (
-    <Card className="rounded-xl w-full">
+    <Card className="w-full rounded-xl">
       <CardHeader className="text-center">
         <Link
           href={"/"}

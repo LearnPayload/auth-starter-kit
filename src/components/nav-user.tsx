@@ -2,6 +2,9 @@
 
 import { ChevronsUpDown, SettingsIcon, UserIcon } from "lucide-react";
 
+import { PayloadIcon } from "@/authkit/components/icons/payload";
+import { UserInfo } from "@/authkit/components/user-info";
+import { LogoutButton } from "@/authkit/forms/logout/logout-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -18,12 +21,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { User } from "@/payload-types";
 import { getInitials } from "@/lib/utils";
+import { User } from "@/payload-types";
 import { RouteLink } from "./route-link";
-import { LogoutButton } from "@/authkit/forms/logout/logout-button";
-import { PayloadIcon } from "@/authkit/components/icons/payload";
-import { UserInfo } from "@/authkit/components/user-info";
 
 export function NavUser({ user }: { user: User }) {
   const { isMobile } = useSidebar();
@@ -49,7 +49,7 @@ export function NavUser({ user }: { user: User }) {
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
+                <Avatar>
                   <AvatarImage
                     src={user?.avatar ?? ""}
                     alt={user?.name ?? ""}

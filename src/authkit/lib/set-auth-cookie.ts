@@ -1,8 +1,8 @@
 "use server";
 
+import { cookies } from "next/headers";
 import { getCookieExpiration } from "payload";
 import { getPayload } from "../services/payload";
-import { cookies } from "next/headers";
 
 export const setAuthCookie = async (token: string) => {
   const cookieStore = await cookies();

@@ -1,14 +1,14 @@
 import { User as UserType } from "@/payload-types";
+import { randomInt } from "node:crypto";
 import {
   CollectionSlug,
   RequiredDataFromCollectionSlug,
   TypedUser,
   Where,
 } from "payload";
-import { getPayload } from "../../services/payload";
-import { randomInt } from "node:crypto";
-import { AUTH_CONFIG } from "../../lib/config";
 import { send } from "../../emails/otp";
+import { AUTH_CONFIG } from "../../lib/config";
+import { getPayload } from "../../services/payload";
 
 export class User {
   collection: CollectionSlug = "users";

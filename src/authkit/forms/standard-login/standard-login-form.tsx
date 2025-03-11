@@ -1,9 +1,18 @@
 "use client";
 
+import AppLogoIcon from "@/authkit/components/app-logo-icon";
+import { GoogleIcon } from "@/authkit/components/icons/google";
+import TextLink from "@/authkit/components/text-link";
+import { useAuthSettings } from "@/authkit/providers/auth-settings-provider";
+import { RouteLink } from "@/components/route-link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import route from "@/lib/route";
-import { ChevronRightIcon, LoaderCircle } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -12,25 +21,16 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useStandardLoginForm } from "./use-standard-login-form";
-import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import route from "@/lib/route";
 import { cn } from "@/lib/utils";
-import { SubmitOneTimePasswordForm } from "../submit-otp/submit-otp-form";
+import { ChevronRightIcon, LoaderCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { GoogleIcon } from "@/authkit/components/icons/google";
-import TextLink from "@/authkit/components/text-link";
-import { useAuthSettings } from "@/authkit/providers/auth-settings-provider";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { RouteLink } from "@/components/route-link";
-import AppLogoIcon from "@/authkit/components/app-logo-icon";
+import { useState } from "react";
 import { GithubLogin } from "../github-login/github-login";
 import { RequestOneTimePasswordButton } from "../request-otp/request-otp-button";
+import { SubmitOneTimePasswordForm } from "../submit-otp/submit-otp-form";
+import { useStandardLoginForm } from "./use-standard-login-form";
 
 type LoginStep = "init" | "password" | "otp";
 
@@ -51,7 +51,7 @@ export const StandardLoginForm = () => {
 
   const rootError = form.formState.errors.root;
   return (
-    <Card className="rounded-xl w-full">
+    <Card className="w-full rounded-xl">
       <CardHeader className="text-center">
         <RouteLink
           to="home"
@@ -74,12 +74,12 @@ export const StandardLoginForm = () => {
                 </Button>
                 <GithubLogin variant={"outline"} className="w-full" />
               </div>
-              <div className="mt-4 relative">
+              <div className="relative mt-4">
                 <div className="absolute inset-0 flex items-center">
                   <span className="w-full border-t" />
                 </div>
                 <div className="relative flex justify-center text-xs">
-                  <span className="bg-background px-2 text-muted-foreground">
+                  <span className="bg-background text-muted-foreground px-2">
                     or
                   </span>
                 </div>
@@ -107,7 +107,7 @@ export const StandardLoginForm = () => {
                         </FormControl>
                         <FormMessage />
                         {rootError && (
-                          <div className="text-destructive text-sm text-center">
+                          <div className="text-destructive text-center text-sm">
                             {rootError.message}
                           </div>
                         )}
@@ -142,7 +142,7 @@ export const StandardLoginForm = () => {
                 )}
 
                 {formStep === "otp" && (
-                  <div className="gap-2 flex flex-col items-center justify-center text-center">
+                  <div className="flex flex-col items-center justify-center gap-2 text-center">
                     <SubmitOneTimePasswordForm
                       email={form.getValues("email")}
                       onSuccess={redirectOnSuccess}

@@ -1,3 +1,5 @@
+import AppLogoIcon from "@/authkit/components/app-logo-icon";
+import { AuthProviderServer } from "@/authkit/providers/auth-provider-server";
 import {
   Card,
   CardContent,
@@ -7,8 +9,6 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { WithUser } from "./_component/with-user";
-import { AuthProviderServer } from "@/authkit/providers/auth-provider-server";
-import AppLogoIcon from "@/authkit/components/app-logo-icon";
 
 export const metadata = {
   title: "Create your account | Payload Auth Starter",
@@ -18,7 +18,7 @@ export const metadata = {
 export default async function VerifyEmail() {
   return (
     <AuthProviderServer>
-      <Card className="rounded-xl w-full">
+      <Card className="w-full rounded-xl">
         <CardHeader className="text-center">
           <Link
             href={"/"}
@@ -31,7 +31,7 @@ export default async function VerifyEmail() {
             Please verify your email address
           </CardDescription>
         </CardHeader>
-        <CardContent className="px-10 py-8 pt-0 flex flex-col items-center">
+        <CardContent className="flex flex-col items-center px-10 py-8 pt-0">
           <WithUser />
         </CardContent>
       </Card>
