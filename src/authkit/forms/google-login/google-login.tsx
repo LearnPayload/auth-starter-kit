@@ -21,8 +21,11 @@ export const GoogleLogin: typeof Button = ({ variant, className }) => {
           className={className}
           variant={variant}
         >
-          {isPending && <LoaderCircle className="h-4 w-4 animate-spin" />}
-          <GoogleIcon />
+          {isPending ? (
+            <LoaderCircle size={16} className="animate-spin" />
+          ) : (
+            <GoogleIcon size="sm" />
+          )}
           Google
         </Button>
       </form>

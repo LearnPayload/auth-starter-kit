@@ -47,24 +47,27 @@ export const handler = async (req: PayloadRequest) => {
     picture: string;
   };
 
-  const image = await fetchFileByURL(googleUser.picture);
-
-  const media = await req.payload.create({
-    collection: "media",
-    data: { alt: googleUser.name },
-    file: image,
-  });
-
   const user = await User.updateOrCreate(
     { email: { equals: googleUser.email } },
     {
       name: googleUser.name,
       email: googleUser.email,
-      avatar: media.url,
       password,
       role: "admin",
     },
   );
+
+  if (!user.avatar) {
+    const image = await fetchFileByURL(googleUser.picture);
+
+    const media = await req.payload.create({
+      collection: "media",
+      data: { alt: googleUser.name },
+      file: image,
+    });
+
+    await user.update({ avatar: media.url });
+  }
 
   try {
     await loginAs(user);

@@ -21,8 +21,11 @@ export const GithubLogin: typeof Button = ({ variant, className }) => {
           className={className}
           variant={variant}
         >
-          {isPending && <LoaderCircle className="h-4 w-4 animate-spin" />}
-          <GithubIcon />
+          {isPending ? (
+            <LoaderCircle size={16} className="animate-spin" />
+          ) : (
+            <GithubIcon size="sm" />
+          )}
           Github
         </Button>
       </form>

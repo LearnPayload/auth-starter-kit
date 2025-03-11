@@ -53,26 +53,29 @@ export const handler = async (req: PayloadRequest) => {
     );
   }
 
-  const image = await fetchFileByURL(githubUser.avatar_url);
-
-  const media = await req.payload.create({
-    collection: "media",
-    data: { alt: githubUser.name },
-    file: image,
-  });
-
   const password = randomBytes(16).toString("hex");
   const user = await User.updateOrCreate(
     { email: { equals: githubUser.email } },
     {
       name: githubUser.name,
       email: githubUser.email,
-      avatar: media.url,
       password,
       role: "admin",
       _verified: true,
     },
   );
+
+  if (!user.avatar) {
+    const image = await fetchFileByURL(githubUser.avatar_url);
+
+    const media = await req.payload.create({
+      collection: "media",
+      data: { alt: githubUser.name },
+      file: image,
+    });
+
+    await user.update({ avatar: media.url });
+  }
 
   try {
     await loginAs(user);

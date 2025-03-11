@@ -66,7 +66,7 @@ export class User {
       const user = await payload.update({
         collection: "users",
         id: found.id,
-        data,
+        data: { ...data, avatar: undefined },
       });
 
       return new User(user);
