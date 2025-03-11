@@ -76,6 +76,12 @@ export const handler = async (req: PayloadRequest) => {
     error = "login_failed";
   }
 
+  if (error) {
+    return Response.redirect(
+      new URL(`/auth/login?error=google_login`, req.url),
+    );
+  }
+
   return Response.redirect(
     new URL(AUTH_CONFIG.redirectAfterUserLogin, req.url),
   );
