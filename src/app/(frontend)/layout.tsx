@@ -1,4 +1,3 @@
-import { AuthProviderServer } from "@/authkit/providers/auth-provider-server";
 import { ThemeProvider } from "@/authkit/providers/theme-provider";
 import { Instrument_Sans } from "next/font/google";
 import React from "react";
@@ -23,16 +22,14 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={instrument.variable}>
-        <AuthProviderServer>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <main>{children}</main>
-          </ThemeProvider>
-        </AuthProviderServer>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

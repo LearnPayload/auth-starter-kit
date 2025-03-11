@@ -1,7 +1,6 @@
 "use client";
 
 import AppLogoIcon from "@/authkit/components/app-logo-icon";
-import { GoogleIcon } from "@/authkit/components/icons/google";
 import TextLink from "@/authkit/components/text-link";
 import { useAuthSettings } from "@/authkit/providers/auth-settings-provider";
 import { RouteLink } from "@/components/route-link";
@@ -28,6 +27,7 @@ import { ChevronRightIcon, LoaderCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { GithubLogin } from "../github-login/github-login";
+import { GoogleLogin } from "../google-login/google-login";
 import { RequestOneTimePasswordButton } from "../request-otp/request-otp-button";
 import { SubmitOneTimePasswordForm } from "../submit-otp/submit-otp-form";
 import { useStandardLoginForm } from "./use-standard-login-form";
@@ -69,9 +69,7 @@ export const StandardLoginForm = () => {
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <div className="grid grid-flow-col gap-2">
-                <Button variant={"outline"}>
-                  <GoogleIcon size="sm" /> Google
-                </Button>
+                <GoogleLogin variant={"outline"} className="w-full" />
                 <GithubLogin variant={"outline"} className="w-full" />
               </div>
               <div className="relative mt-4">

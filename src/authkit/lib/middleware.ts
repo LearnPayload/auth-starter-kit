@@ -11,6 +11,9 @@ export type AuthNextRequest = NextRequest & {
 const isProtectedRoute = (url: string) =>
   AUTH_CONFIG.protectedRoutes.some((route) => new RegExp(route).test(url));
 
+const isAdminRoute = (url: string) =>
+  AUTH_CONFIG.protectedAdminRoutes.some((route) => new RegExp(route).test(url));
+
 const isPublicRoute = (url: string) =>
   AUTH_CONFIG.publicRoutes.some((route) => new RegExp(route).test(url));
 
@@ -67,6 +70,18 @@ export const authMiddleware: AuthMiddleWareFunction =
     ) {
       return NextResponse.redirect(
         new URL(AUTH_CONFIG.unverifiedSignInRoute, baseUrl.origin),
+      );
+    }
+
+    // user is authenticated but is not an admin
+    if (
+      isAdminRoute(request.url) &&
+      user &&
+      user._verified &&
+      user.role !== "admin"
+    ) {
+      return NextResponse.redirect(
+        new URL(AUTH_CONFIG.redirectIfNotAdmin, baseUrl.origin),
       );
     }
 

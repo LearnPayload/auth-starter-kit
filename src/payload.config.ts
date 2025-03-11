@@ -4,14 +4,16 @@ import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
 import { buildConfig } from "payload";
-import { fileURLToPath } from "url";
 import sharp from "sharp";
+import { fileURLToPath } from "url";
 
-import { Media } from "./config/collections/Media";
+import { Docs } from "./authkit/collections/docs/docs-collection-config";
+import { Users } from "./authkit/collections/users/users-collection-config";
 import { emailConfig } from "./authkit/config/email/config";
 import AuthGlobalConfig from "./authkit/config/globals";
+import { Media } from "./config/collections/Media";
+import { payloadStorage } from "./config/storage/s3";
 import { env } from "./env.mjs";
-import { Users } from "./authkit/collections/users/users-collection-config";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -26,7 +28,7 @@ export default buildConfig({
   email: await emailConfig(),
   globals: [AuthGlobalConfig],
   serverURL: env.NEXT_PUBLIC_VERCEL_URL,
-  collections: [Users, Media],
+  collections: [Users, Docs, Media],
   editor: lexicalEditor(),
   secret: env.PAYLOAD_SECRET || "",
   typescript: {
@@ -40,6 +42,7 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
+    payloadStorage,
     // storage-adapter-placeholder
   ],
 });
