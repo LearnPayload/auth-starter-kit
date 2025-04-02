@@ -18,7 +18,6 @@ export const useStandardLoginForm = (
     {
       actionProps: {
         onSuccess: () => {
-          console.log("Standard login success");
           // redirect to home
           window.location.reload();
         },

@@ -20,7 +20,6 @@ export const useSubmitOneTimePasswordForm = (
     {
       actionProps: {
         onSuccess: () => {
-          console.log("onSuccess");
           router.push(AUTH_CONFIG.redirectAfterUserLogin);
         },
       },

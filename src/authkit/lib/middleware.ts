@@ -49,7 +49,6 @@ export const authMiddleware: AuthMiddleWareFunction =
     authRequest.user = user;
 
     const baseUrl = new URL(request.url);
-    console.log("baseUrl", baseUrl);
     const basePath = baseUrl.pathname;
 
     if (isProtectedRoute(request.url) && !user) {

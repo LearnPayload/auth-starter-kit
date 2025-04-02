@@ -17,7 +17,6 @@ import { useUserProfileForm } from "./use-user-profile-form";
 
 export const UserProfileForm = () => {
   const { user } = useAuth();
-  console.log("user", user);
   const {
     form,
     action: { isPending },

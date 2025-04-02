@@ -8,9 +8,7 @@ import { googleLoginSchema } from "./types";
 export const useGoogleLogin = () => {
   return useHookFormAction(googleLoginAction, zodResolver(googleLoginSchema), {
     actionProps: {
-      onSuccess: () => {
-        console.log("Google login success");
-      },
+      onSuccess: () => {},
     },
     formProps: {},
     errorMapProps: {},

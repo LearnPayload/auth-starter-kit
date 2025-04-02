@@ -9,7 +9,6 @@ import { userProfileSchema } from "./validation";
 export const updateUserProfile = actionClient
   .schema(userProfileSchema)
   .action(async ({ parsedInput: { email, name, avatar } }) => {
-    console.log(process.env.DATABASE_URL);
     const payload = await getPayload();
     const { user } = await getAuth();
     if (!user) {

@@ -8,9 +8,7 @@ import { githubLoginSchema } from "./types";
 export const useGithubLogin = () => {
   return useHookFormAction(githubLoginAction, zodResolver(githubLoginSchema), {
     actionProps: {
-      onSuccess: () => {
-        console.log("Github login success");
-      },
+      onSuccess: () => {},
     },
     formProps: {},
     errorMapProps: {},

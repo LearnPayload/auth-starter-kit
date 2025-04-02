@@ -39,7 +39,5 @@ export const submitOneTimePasswordAction = actionClient
 
     await loginAs(user);
 
-    console.log("redirecting to", AUTH_CONFIG.redirectAfterUserLogin);
-
     return redirect(AUTH_CONFIG.redirectAfterUserLogin);
   });

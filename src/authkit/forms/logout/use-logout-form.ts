@@ -10,11 +10,10 @@ export const useLogoutForm = () => {
   const { logout } = useAuth();
   return useHookFormAction(logoutAction, zodResolver(logoutSchema), {
     actionProps: {
-      onError: (error) => {
-        console.error("Error logging out", error);
+      onError: () => {
+        // console.error("Error logging out", error);
       },
       onSuccess: () => {
-        console.log("Logged out");
         logout();
       },
     },
