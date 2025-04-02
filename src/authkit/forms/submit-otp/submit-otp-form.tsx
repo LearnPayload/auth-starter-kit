@@ -15,13 +15,10 @@ import { LoaderCircle } from "lucide-react";
 import { useSubmitOneTimePasswordForm } from "./use-submit-otp-form";
 import { SubmitOneTimePasswordEmail } from "./validation";
 
-type SubmitOneTimePasswordFormProps = SubmitOneTimePasswordEmail & {
-  onSuccess: () => void;
-};
+type SubmitOneTimePasswordFormProps = SubmitOneTimePasswordEmail;
 
 export const SubmitOneTimePasswordForm = ({
   email,
-  onSuccess,
 }: SubmitOneTimePasswordFormProps) => {
   const {
     form,

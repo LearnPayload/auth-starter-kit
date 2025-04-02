@@ -9,12 +9,11 @@ export const WithUser = () => {
   if (!user) return null;
   return (
     <div className="grid gap-2">
-      <SubmitOneTimePasswordForm email={user?.email} onSuccess={console.log} />
+      <SubmitOneTimePasswordForm email={user?.email} />
 
       <RequestOneTimePasswordButton
         email={user?.email}
         label="Resend one-time password"
-        onSuccess={console.log}
       />
     </div>
   );

@@ -24,7 +24,6 @@ import { Input } from "@/components/ui/input";
 import route from "@/lib/route";
 import { cn } from "@/lib/utils";
 import { ChevronRightIcon, LoaderCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { GithubLogin } from "../github-login/github-login";
 import { GoogleLogin } from "../google-login/google-login";
@@ -47,10 +46,6 @@ export const StandardLoginForm = () => {
     email: "hello@example.com",
     password: "password",
   });
-
-  const router = useRouter();
-
-  const redirectOnSuccess = () => router.push(route("authkit.overview"));
 
   const rootError = form.formState.errors.root;
   return (
@@ -146,7 +141,6 @@ export const StandardLoginForm = () => {
                   <div className="flex flex-col items-center justify-center gap-2 text-center">
                     <SubmitOneTimePasswordForm
                       email={form.getValues("email")}
-                      onSuccess={redirectOnSuccess}
                     />
                   </div>
                 )}
@@ -179,9 +173,6 @@ export const StandardLoginForm = () => {
 
                     <RequestOneTimePasswordButton
                       email={form.getValues("email")}
-                      onSuccess={() => {
-                        setFormStep("otp");
-                      }}
                     />
                   </div>
                 )}

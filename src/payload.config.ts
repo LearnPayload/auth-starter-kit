@@ -13,7 +13,6 @@ import { emailConfig } from "./authkit/config/email/config";
 import AuthGlobalConfig from "./authkit/config/globals";
 import { Media } from "./config/collections/Media";
 import { payloadStorage } from "./config/storage/s3";
-import { env } from "./env.mjs";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -27,16 +26,16 @@ export default buildConfig({
   },
   email: await emailConfig(),
   globals: [AuthGlobalConfig],
-  serverURL: env.NEXT_PUBLIC_VERCEL_URL,
+  serverURL: process.env.NEXT_PUBLIC_VERCEL_URL,
   collections: [Users, Docs, Media],
   editor: lexicalEditor(),
-  secret: env.PAYLOAD_SECRET || "",
+  secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: env.DATABASE_URL || "",
+      connectionString: process.env.DATABASE_URL || "",
     },
   }),
   sharp,
