@@ -1,10 +1,10 @@
 export const AUTH_CONFIG = {
   redirectIfNotAdmin: "/app/dashboard",
-  redirectAfterUserLogin: "/",
+  redirectAfterUserLogin: "/app/dashboard",
   redirectAfterLogout: "/",
   protectedAdminRoutes: ["/app/authkit(.*)"],
   protectedRoutes: ["/app(.*)", "/auth/verify-email"],
-  publicRoutes: ["/auth/(?!/verify-email)(.*)"],
+  publicRoutes: ["/auth/(?!verify-email$).*"],
   defaultSignInRoute: "/auth/login",
   unverifiedSignInRoute: "/auth/verify-email",
   otpExpirationMinutes: 5,

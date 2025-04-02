@@ -43,7 +43,10 @@ export const StandardLoginForm = () => {
     form,
     action: { isPending },
     handleSubmitWithAction,
-  } = useStandardLoginForm({ email: "hello@example.com", password: "1234" });
+  } = useStandardLoginForm({
+    email: "hello@example.com",
+    password: "password",
+  });
 
   const router = useRouter();
 

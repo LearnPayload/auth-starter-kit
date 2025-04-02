@@ -1,5 +1,6 @@
 "use server";
 
+import { AUTH_CONFIG } from "@/authkit/lib/config";
 import { actionClient } from "@/authkit/lib/safe-action";
 import { returnValidationErrors } from "next-safe-action";
 import { redirect } from "next/navigation";
@@ -38,5 +39,7 @@ export const submitOneTimePasswordAction = actionClient
 
     await loginAs(user);
 
-    redirect("/");
+    console.log("redirecting to", AUTH_CONFIG.redirectAfterUserLogin);
+
+    return redirect(AUTH_CONFIG.redirectAfterUserLogin);
   });

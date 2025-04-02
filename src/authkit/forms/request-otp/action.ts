@@ -21,6 +21,7 @@ export const requestOneTimePasswordLoginAction = actionClient
     );
 
     try {
+      console.log("Sending email verification");
       await user.updateAndSendEmailVerification();
     } catch (error) {
       console.error(error);

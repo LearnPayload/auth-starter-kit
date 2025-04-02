@@ -27,7 +27,7 @@ export const SubmitOneTimePasswordForm = ({
     form,
     action: { isPending },
     handleSubmitWithAction,
-  } = useSubmitOneTimePasswordForm({ email, otp: "" }, onSuccess);
+  } = useSubmitOneTimePasswordForm({ email, otp: "" });
 
   return (
     <div className="grid gap-4">

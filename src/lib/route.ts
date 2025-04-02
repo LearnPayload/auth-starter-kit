@@ -46,7 +46,6 @@ function parseParams<P>(route: Route, params?: P): string {
 }
 
 function routeFn<P>(route: Route, params?: Partial<P>): string {
-  console.log("routeFn", route, params);
   return parseParams(route, params);
 }
 

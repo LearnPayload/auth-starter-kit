@@ -1,5 +1,4 @@
 import { User } from "@/payload-types";
-import { draftMode } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { TypedUser } from "payload";
 import { AUTH_CONFIG } from "./config";
@@ -44,10 +43,6 @@ type AuthMiddleWareFunction = (
 
 export const authMiddleware: AuthMiddleWareFunction =
   (cb) => async (request: NextRequest) => {
-    const { isEnabled: isDraftMode } = await draftMode();
-    const currentUrl = new URL(request.url);
-    const { searchParams } = currentUrl;
-    console.log({ searchParams });
     const response = NextResponse.next();
     const user = await parseUserFromEndpoint(request);
     const authRequest: AuthNextRequest = request as AuthNextRequest;
@@ -96,7 +91,7 @@ export const authMiddleware: AuthMiddleWareFunction =
       );
     }
 
-    if (isPublicRoute(request.url) && user && !isDraftMode) {
+    if (isPublicRoute(request.url) && user) {
       return NextResponse.redirect(
         new URL(AUTH_CONFIG.redirectAfterUserLogin, baseUrl.origin),
       );

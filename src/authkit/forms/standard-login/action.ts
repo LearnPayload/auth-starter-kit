@@ -29,6 +29,7 @@ export const standardLoginAction = actionClient
       });
 
       await setAuthCookie(token!);
+      return { success: AUTH_CONFIG.redirectAfterUserLogin };
     } catch (error: unknown) {
       let errorMessage = ERROR_MESSAGES.Default;
       if (error instanceof Error) {
@@ -39,8 +40,4 @@ export const standardLoginAction = actionClient
         _errors: [errorMessage],
       });
     }
-
-    return { success: AUTH_CONFIG.redirectAfterUserLogin };
-
-    // return redirect(AUTH_CONFIG.redirectAfterLogin);
   });

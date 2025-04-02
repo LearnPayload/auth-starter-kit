@@ -20,8 +20,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props;
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={instrument.variable}>
+    <html lang="en">
+      <body className={instrument.variable} suppressHydrationWarning={true}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

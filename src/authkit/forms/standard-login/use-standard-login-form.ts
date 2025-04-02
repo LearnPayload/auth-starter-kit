@@ -16,7 +16,13 @@ export const useStandardLoginForm = (
     standardLoginAction,
     zodResolver(standardLoginSchema),
     {
-      actionProps: {},
+      actionProps: {
+        onSuccess: () => {
+          console.log("Standard login success");
+          // redirect to home
+          window.location.reload();
+        },
+      },
       formProps: { defaultValues },
       errorMapProps: {},
     },

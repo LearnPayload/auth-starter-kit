@@ -17,10 +17,7 @@ export const emailConfig = async () => {
     transportOptions: {
       host: env.MAIL_HOST,
       port: env.MAIL_PORT,
-      auth: {
-        user: env.MAIL_USERNAME,
-        pass: env.MAIL_PASSWORD,
-      },
+      auth: {},
     },
   });
 };
