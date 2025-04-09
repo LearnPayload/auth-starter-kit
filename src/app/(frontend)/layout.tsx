@@ -1,5 +1,4 @@
 import { ThemeProvider } from "@/authkit/providers/theme-provider";
-import { env } from "@/env.mjs";
 import { Instrument_Sans } from "next/font/google";
 import React from "react";
 import "./styles.css";
@@ -19,11 +18,6 @@ export const metadata = {
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props;
-
-  console.log({
-    VERCEL_URL: env.VERCEL_URL,
-    NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_SERVER_URL,
-  });
 
   return (
     <html lang="en">

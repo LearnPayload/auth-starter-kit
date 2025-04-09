@@ -3,7 +3,8 @@ import { z } from "zod";
 
 export const env = createEnv({
   client: {
-    VERCEL_URL: z.string().min(1),
+    NEXT_PUBLIC_VERCEL_URL: z.string().min(1),
+    NEXT_PUBLIC_SERVER_URL: z.string().min(1),
   },
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
@@ -21,8 +22,11 @@ export const env = createEnv({
     MAIL_PASSWORD: process.env.MAIL_PASSWORD,
     RESEND_API_KEY: process.env.RESEND_API_KEY,
     VERCEL_URL: process.env.VERCEL_URL,
+    NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
+    NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
   },
   server: {
+    VERCEL_URL: z.string().min(1),
     DATABASE_URL: z.string().url(),
     PAYLOAD_SECRET: z.string(),
     GITHUB_CLIENT_ID: z.string(),
@@ -38,4 +42,10 @@ export const env = createEnv({
     MAIL_PASSWORD: z.string().optional(),
     RESEND_API_KEY: z.string(),
   },
+});
+
+console.log({
+  VERCEL_URL: env.VERCEL_URL,
+  NEXT_PUBLIC_VERCEL_URL: env.NEXT_PUBLIC_VERCEL_URL,
+  NEXT_PUBLIC_SERVER_URL: env.NEXT_PUBLIC_SERVER_URL,
 });
