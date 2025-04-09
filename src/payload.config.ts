@@ -22,7 +22,7 @@ export default buildConfig({
     },
   },
   email: await emailConfig(),
-  serverURL: env.VERCEL_URL,
+  serverURL: `https://${env.VERCEL_URL}`,
   collections: [Users, Media],
   editor: lexicalEditor(),
   secret: env.PAYLOAD_SECRET,
