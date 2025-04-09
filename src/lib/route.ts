@@ -12,7 +12,6 @@ const routes = {
 
   // user account
   "account.settings": "/app/account/settings/profile",
-  "account.settings.security": "/app/account/settings/security",
   "account.settings.appearance": "/app/account/settings/appearance",
 
   // authkitapp/

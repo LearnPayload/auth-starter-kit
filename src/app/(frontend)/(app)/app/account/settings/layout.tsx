@@ -32,20 +32,6 @@ export default function SettingsLayout({
                 Profile
               </RouteLink>
             </Button>
-            <Button
-              size="sm"
-              variant="ghost"
-              asChild
-              className="justify-start text-left"
-            >
-              <RouteLink
-                to={"account.settings.security"}
-                activeClassName="bg-primary/10"
-                prefetch
-              >
-                Security
-              </RouteLink>
-            </Button>
 
             <Button
               size="sm"
