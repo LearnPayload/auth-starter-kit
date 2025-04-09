@@ -67,7 +67,6 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
-    docs: Doc;
     media: Media;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -76,7 +75,6 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
-    docs: DocsSelect<false> | DocsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -85,12 +83,8 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {
-    'auth-settings': AuthSetting;
-  };
-  globalsSelect: {
-    'auth-settings': AuthSettingsSelect<false> | AuthSettingsSelect<true>;
-  };
+  globals: {};
+  globalsSelect: {};
   locale: null;
   user: User & {
     collection: 'users';
@@ -144,26 +138,6 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "docs".
- */
-export interface Doc {
-  id: number;
-  title: string;
-  description: string;
-  /**
-   * This will be used in the URL (e.g., /docs/getting-started)
-   */
-  slug: string;
-  /**
-   * MDX content for this documentation page
-   */
-  content: string;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
@@ -191,10 +165,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: string | User;
-      } | null)
-    | ({
-        relationTo: 'docs';
-        value: number | Doc;
       } | null)
     | ({
         relationTo: 'media';
@@ -267,19 +237,6 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "docs_select".
- */
-export interface DocsSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
-  slug?: T;
-  content?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
@@ -327,38 +284,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "auth-settings".
- */
-export interface AuthSetting {
-  id: number;
-  enable_credentials?: boolean | null;
-  enable_password_reset?: boolean | null;
-  enable_one_time_password_access?: boolean | null;
-  enable_google?: boolean | null;
-  enable_github?: boolean | null;
-  title: string;
-  _status?: ('draft' | 'published') | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "auth-settings_select".
- */
-export interface AuthSettingsSelect<T extends boolean = true> {
-  enable_credentials?: T;
-  enable_password_reset?: T;
-  enable_one_time_password_access?: T;
-  enable_google?: T;
-  enable_github?: T;
-  title?: T;
-  _status?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -9,7 +9,7 @@ import { RequestOneTimePasswordType } from "./validation";
 type RequestOneTimePasswordButtonProps = RequestOneTimePasswordType & {
   label?: React.ReactNode;
   onSuccess?: () => void;
-  onError?: (error: any) => void;
+  onError?: (error: unknown) => void;
 };
 
 export const RequestOneTimePasswordButton = ({

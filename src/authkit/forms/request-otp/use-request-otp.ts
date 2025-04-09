@@ -15,7 +15,7 @@ export const useRequestOTP = (
     email: "",
   },
   onSuccess?: () => void,
-  onError?: (error: any) => void,
+  onError?: (error: unknown) => void,
 ) => {
   return useHookFormAction(
     requestOneTimePasswordLoginAction,
