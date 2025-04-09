@@ -1,9 +1,9 @@
 "use server";
 
-import { User } from "@/authkit/collections/users/user";
 import { AUTH_CONFIG } from "@/authkit/lib/config";
 import { loginAs } from "@/authkit/lib/login-as";
 import { actionClient } from "@/authkit/lib/safe-action";
+import { User } from "@/authkit/lib/user";
 import { returnValidationErrors } from "next-safe-action";
 import { redirect } from "next/navigation";
 import {

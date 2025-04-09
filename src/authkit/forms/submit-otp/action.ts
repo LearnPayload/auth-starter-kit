@@ -1,8 +1,8 @@
 "use server";
 
-import { User } from "@/authkit/collections/users/user";
 import { loginAs } from "@/authkit/lib/login-as";
 import { actionClient } from "@/authkit/lib/safe-action";
+import { User } from "@/authkit/lib/user";
 import { returnValidationErrors } from "next-safe-action";
 import { otpLoginSchema } from "./validation";
 

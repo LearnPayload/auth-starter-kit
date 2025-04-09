@@ -1,15 +1,13 @@
+import { generateUserId } from "@/authkit/collections/users/generate-user-id";
+import { isAdmin } from "@/config/access/admin";
 import type { CollectionConfig } from "payload";
 import { oAuthCallbackEndpoint } from "./endpoints";
-import { generateUserId } from "./generate-user-id";
 import { afterLogin } from "./hooks";
 
 export const Users: CollectionConfig = {
   slug: "users",
   access: {
-    admin: ({ req: { user } }) => {
-      if (!user || user.role !== "admin") return false;
-      return true;
-    },
+    admin: isAdmin,
   },
   admin: {
     useAsTitle: "email",

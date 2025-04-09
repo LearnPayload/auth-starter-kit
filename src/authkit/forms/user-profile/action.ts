@@ -1,7 +1,7 @@
 "use server";
 
-import { User } from "@/authkit/collections/users/user";
 import { actionClient } from "@/authkit/lib/safe-action";
+import { User } from "@/authkit/lib/user";
 import { getAuth } from "@/authkit/services/get-auth";
 import { returnValidationErrors } from "next-safe-action";
 import { userProfileSchema } from "./validation";

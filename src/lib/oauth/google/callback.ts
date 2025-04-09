@@ -1,6 +1,6 @@
-import { User } from "@/authkit/collections/users/user";
 import { AUTH_CONFIG } from "@/authkit/lib/config";
 import { loginAs } from "@/authkit/lib/login-as";
+import { User } from "@/authkit/lib/user";
 import { env } from "@/env.mjs";
 import { fetchFileByURL } from "@/lib/fetch-file-by-url";
 import { decodeJwt } from "jose/jwt/decode";

@@ -6,9 +6,9 @@ import {
   TypedUser,
   Where,
 } from "payload";
-import { send } from "../../emails/otp";
-import { AUTH_CONFIG } from "../../lib/config";
-import { getPayload } from "../../services/payload";
+import { send } from "../emails/otp";
+import { getPayload } from "../services/payload";
+import { AUTH_CONFIG } from "./config";
 
 export class User {
   collection: CollectionSlug = "users";

@@ -1,8 +1,8 @@
 "use server";
 
 import { actionClient } from "@/authkit/lib/safe-action";
+import { User } from "@/authkit/lib/user";
 import { randomBytes } from "node:crypto";
-import { User } from "../../collections/users/user";
 import { requestOneTimePasswordSchema } from "./validation";
 
 export const requestOneTimePasswordLoginAction = actionClient
