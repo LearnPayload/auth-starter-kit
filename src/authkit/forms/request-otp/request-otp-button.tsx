@@ -1,8 +1,8 @@
+import InputError from "@/components/input-error";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { LoaderCircle, MailCheckIcon } from "lucide-react";
 import React from "react";
-import InputError from "../../components/input-error";
 import { useRequestOTP } from "./use-request-otp";
 import { RequestOneTimePasswordType } from "./validation";
 
