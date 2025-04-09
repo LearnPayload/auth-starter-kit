@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -12,7 +13,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { LoaderCircle } from "lucide-react";
-import Link from "next/link";
 import { useUserProfileForm } from "./use-user-profile-form";
 
 export const UserProfileForm = () => {
@@ -79,26 +79,14 @@ export const UserProfileForm = () => {
                     value={field.value ?? ""}
                   />
                 </FormControl>
+                <FormDescription>
+                  If you change your email address, you will no longer be able
+                  to access the dashboard until the new address is verified.
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
-        </div>
-
-        <div>
-          <p className="text-muted-foreground -mt-4 text-sm">
-            Your email address is unverified.{" "}
-            <Link
-              href={""}
-              className="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
-            >
-              Click here to resend the verification email.
-            </Link>
-          </p>
-
-          <div className="mt-2 text-sm font-medium text-green-600">
-            A new verification link has been sent to your email address.
-          </div>
         </div>
 
         <div className="flex items-center gap-4">

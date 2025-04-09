@@ -87,25 +87,5 @@ export const Users: CollectionConfig = {
       type: "date",
       required: false,
     },
-
-    {
-      name: "email_addresses",
-      label: "Email Addresses",
-      type: "array",
-      required: false,
-      admin: {},
-      fields: [
-        {
-          name: "email",
-          type: "email",
-          required: true,
-        },
-        {
-          name: "verified",
-          type: "checkbox",
-          required: false,
-        },
-      ],
-    },
   ],
 };

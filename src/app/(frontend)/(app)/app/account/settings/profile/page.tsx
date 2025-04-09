@@ -1,5 +1,4 @@
 import { UserProfileForm } from "@/authkit/forms/user-profile/user-profile-form";
-import DeleteUser from "@/components/delete-user";
 import HeadingSmall from "@/components/heading-small";
 
 export default function Profile() {
@@ -12,8 +11,6 @@ export default function Profile() {
         />
         <UserProfileForm />
       </div>
-
-      <DeleteUser />
     </div>
   );
 }

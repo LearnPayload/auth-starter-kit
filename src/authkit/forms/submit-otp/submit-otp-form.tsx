@@ -42,7 +42,7 @@ export const SubmitOneTimePasswordForm = ({
         </p>
       </div>
       <Form {...form}>
-        <form onSubmit={handleSubmitWithAction}>
+        <form onSubmit={handleSubmitWithAction} className="grid gap-4">
           <FormField
             control={form.control}
             name="otp"

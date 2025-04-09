@@ -1,30 +1,32 @@
 "use server";
 
+import { User } from "@/authkit/collections/users/user";
 import { actionClient } from "@/authkit/lib/safe-action";
 import { getAuth } from "@/authkit/services/get-auth";
-import { getPayload } from "@/authkit/services/payload";
 import { returnValidationErrors } from "next-safe-action";
 import { userProfileSchema } from "./validation";
-
 export const updateUserProfile = actionClient
   .schema(userProfileSchema)
-  .action(async ({ parsedInput: { email, name, avatar } }) => {
-    const payload = await getPayload();
-    const { user } = await getAuth();
-    if (!user) {
+  .action(async ({ parsedInput: { email, name } }) => {
+    const auth = await getAuth();
+    if (!auth.user) {
       throw new Error("User not found");
     }
 
+    const user = new User(auth.user);
+
     try {
-      await payload.update({
-        collection: "users", // required
-        id: user.id, // required
-        data: {
-          email,
-          name,
-          avatar,
-        },
+      await user.update({
+        name,
       });
+
+      if (email !== user.email) {
+        await user.update({
+          email,
+          _verified: false,
+        });
+        await user.updateAndSendEmailVerification();
+      }
     } catch (error: unknown) {
       const errorMessage = "Failed to update user profile";
       if (error instanceof Error) {

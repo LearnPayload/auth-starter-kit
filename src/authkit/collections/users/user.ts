@@ -118,6 +118,8 @@ export class User {
       id: this.data.id,
       data,
     });
+
+    this.data = { ...this.data, ...data };
   }
 
   async updateAndSendEmailVerification() {
