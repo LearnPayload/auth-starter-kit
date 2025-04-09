@@ -6,8 +6,7 @@ const routes = {
   // auth pages
   login: "/auth/login",
   register: "/auth/register",
-  "password.request": "/auth/password/request",
-
+  "password.reset": "/auth/password/reset",
   // main app
   "app.dashboard": "/app/dashboard",
 

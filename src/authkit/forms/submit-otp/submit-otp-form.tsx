@@ -15,16 +15,19 @@ import { LoaderCircle } from "lucide-react";
 import { useSubmitOneTimePasswordForm } from "./use-submit-otp-form";
 import { SubmitOneTimePasswordEmail } from "./validation";
 
-type SubmitOneTimePasswordFormProps = SubmitOneTimePasswordEmail;
+type SubmitOneTimePasswordFormProps = SubmitOneTimePasswordEmail & {
+  onSuccess?: () => void;
+};
 
 export const SubmitOneTimePasswordForm = ({
   email,
+  onSuccess,
 }: SubmitOneTimePasswordFormProps) => {
   const {
     form,
     action: { isPending },
     handleSubmitWithAction,
-  } = useSubmitOneTimePasswordForm({ email, otp: "" });
+  } = useSubmitOneTimePasswordForm({ email, otp: "" }, onSuccess);
 
   return (
     <div className="grid gap-4">
@@ -39,38 +42,39 @@ export const SubmitOneTimePasswordForm = ({
         </p>
       </div>
       <Form {...form}>
-        <FormField
-          control={form.control}
-          name="otp"
-          render={({ field }) => (
-            <FormItem className="flex w-full flex-col items-center justify-center">
-              <FormControl>
-                <InputOTP maxLength={6} {...field}>
-                  <InputOTPGroup>
-                    <InputOTPSlot index={0} className="h-12 w-12 text-lg" />
-                    <InputOTPSlot index={1} className="h-12 w-12 text-lg" />
-                    <InputOTPSlot index={2} className="h-12 w-12 text-lg" />
-                    <InputOTPSlot index={3} className="h-12 w-12 text-lg" />
-                    <InputOTPSlot index={4} className="h-12 w-12 text-lg" />
-                    <InputOTPSlot index={5} className="h-12 w-12 text-lg" />
-                  </InputOTPGroup>
-                </InputOTP>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <form onSubmit={handleSubmitWithAction}>
+          <FormField
+            control={form.control}
+            name="otp"
+            render={({ field }) => (
+              <FormItem className="flex w-full flex-col items-center justify-center">
+                <FormControl>
+                  <InputOTP maxLength={6} {...field}>
+                    <InputOTPGroup>
+                      <InputOTPSlot index={0} className="h-12 w-12 text-lg" />
+                      <InputOTPSlot index={1} className="h-12 w-12 text-lg" />
+                      <InputOTPSlot index={2} className="h-12 w-12 text-lg" />
+                      <InputOTPSlot index={3} className="h-12 w-12 text-lg" />
+                      <InputOTPSlot index={4} className="h-12 w-12 text-lg" />
+                      <InputOTPSlot index={5} className="h-12 w-12 text-lg" />
+                    </InputOTPGroup>
+                  </InputOTP>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <Button
-          type="button"
-          className="w-full"
-          tabIndex={4}
-          disabled={isPending}
-          onClick={handleSubmitWithAction}
-        >
-          {isPending && <LoaderCircle className="h-4 w-4 animate-spin" />}
-          Sign in
-        </Button>
+          <Button
+            type="submit"
+            className="w-full"
+            tabIndex={4}
+            disabled={isPending}
+          >
+            {isPending && <LoaderCircle className="h-4 w-4 animate-spin" />}
+            Verify
+          </Button>
+        </form>
       </Form>
     </div>
   );

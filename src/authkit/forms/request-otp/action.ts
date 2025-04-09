@@ -1,7 +1,6 @@
 "use server";
 
 import { actionClient } from "@/authkit/lib/safe-action";
-import { returnValidationErrors } from "next-safe-action";
 import { randomBytes } from "node:crypto";
 import { User } from "../../collections/users/user";
 import { requestOneTimePasswordSchema } from "./validation";
@@ -20,15 +19,7 @@ export const requestOneTimePasswordLoginAction = actionClient
       },
     );
 
-    try {
-      await user.updateAndSendEmailVerification();
-    } catch (error) {
-      console.error(error);
-      returnValidationErrors(requestOneTimePasswordSchema, {
-        _errors: ["There was an error sending the email"],
-      });
-    }
-
+    await user.updateAndSendEmailVerification();
+    console.log("email sent");
     return { email, successful: true };
-    //
   });

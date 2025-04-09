@@ -14,12 +14,21 @@ export const useRequestOTP = (
   defaultValues: z.infer<typeof requestOneTimePasswordSchema> = {
     email: "",
   },
+  onSuccess?: () => void,
+  onError?: (error: any) => void,
 ) => {
   return useHookFormAction(
     requestOneTimePasswordLoginAction,
     zodResolver(requestOneTimePasswordSchema),
     {
-      actionProps: {},
+      actionProps: {
+        onError: (error) => {
+          onError?.(error);
+        },
+        onSuccess: () => {
+          onSuccess?.();
+        },
+      },
       formProps: { defaultValues },
       errorMapProps: {},
     },

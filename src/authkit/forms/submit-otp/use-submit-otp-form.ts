@@ -7,11 +7,13 @@ import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { submitOneTimePasswordAction } from "./action";
 import { otpLoginSchema } from "./validation";
+
 export const useSubmitOneTimePasswordForm = (
   defaultValues: z.infer<typeof otpLoginSchema> = {
     email: "",
     otp: "",
   },
+  onSuccess?: () => void,
 ) => {
   const router = useRouter();
   return useHookFormAction(
@@ -20,7 +22,7 @@ export const useSubmitOneTimePasswordForm = (
     {
       actionProps: {
         onSuccess: () => {
-          router.push(AUTH_CONFIG.redirectAfterUserLogin);
+          onSuccess?.() || router.push(AUTH_CONFIG.redirectAfterUserLogin);
         },
       },
       formProps: { defaultValues },
