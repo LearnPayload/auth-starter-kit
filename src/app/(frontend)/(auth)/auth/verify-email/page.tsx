@@ -1,5 +1,5 @@
-import AppLogoIcon from "@/authkit/components/app-logo-icon";
 import { AuthProviderServer } from "@/authkit/providers/auth-provider-server";
+import AppLogoIcon from "@/components/app-logo-icon";
 import {
   Card,
   CardContent,

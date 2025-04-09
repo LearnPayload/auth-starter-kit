@@ -1,6 +1,6 @@
 "use client";
 
-import TextLink from "@/authkit/components/text-link";
+import TextLink from "@/components/text-link";
 import { Button } from "@/components/ui/button";
 import {
   Form,

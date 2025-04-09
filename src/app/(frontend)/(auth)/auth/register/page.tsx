@@ -1,5 +1,5 @@
-import AppLogoIcon from "@/authkit/components/app-logo-icon";
 import { CreateAccountForm } from "@/authkit/forms/create-account/form";
+import AppLogoIcon from "@/components/app-logo-icon";
 import {
   Card,
   CardContent,

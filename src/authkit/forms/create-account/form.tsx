@@ -2,7 +2,7 @@
 
 import { GithubIcon } from "@/authkit/components/icons/github";
 import { GoogleIcon } from "@/authkit/components/icons/google";
-import TextLink from "@/authkit/components/text-link";
+import TextLink from "@/components/text-link";
 import { Button } from "@/components/ui/button";
 import {
   Form,

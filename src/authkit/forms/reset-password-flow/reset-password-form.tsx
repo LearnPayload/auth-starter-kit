@@ -15,7 +15,7 @@ import {
 
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-import AppLogoIcon from "@/authkit/components/app-logo-icon";
+import AppLogoIcon from "@/components/app-logo-icon";
 import { Card } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";

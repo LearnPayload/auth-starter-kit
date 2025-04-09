@@ -1,6 +1,6 @@
 "use client";
 
-import AppLogoIcon from "@/authkit/components/app-logo-icon";
+import AppLogoIcon from "@/components/app-logo-icon";
 import { RouteLink } from "@/components/route-link";
 import { Button } from "@/components/ui/button";
 import {

@@ -1,7 +1,7 @@
-import AppLogoIcon from "@/authkit/components/app-logo-icon";
 import { GithubLogin } from "@/authkit/forms/github-login/github-login";
 import { GoogleLogin } from "@/authkit/forms/google-login/google-login";
 import { StandardLoginForm } from "@/authkit/forms/standard-login/standard-login-form";
+import AppLogoIcon from "@/components/app-logo-icon";
 import { RouteLink } from "@/components/route-link";
 import {
   Card,

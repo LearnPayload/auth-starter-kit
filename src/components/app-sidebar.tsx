@@ -1,7 +1,7 @@
 "use client";
 
-import AppLogo from "@/authkit/components/app-logo";
 import { useAuth } from "@/authkit/providers/auth-provider";
+import AppLogo from "@/components/app-logo";
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
 import {
