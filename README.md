@@ -1,3 +1,5 @@
+<img width="511" alt="image" src="https://github.com/user-attachments/assets/bc558492-d2cc-4962-b71a-40b6d0d1b07b" />
+
 # Payload Authkit
 
 A modern authentication starter kit built with Payload CMS, Next.js, and TypeScript. This template provides a solid foundation for building a secure, scalable authentication system for your app.
