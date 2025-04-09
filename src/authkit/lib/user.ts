@@ -10,6 +10,15 @@ import { send } from "../emails/otp";
 import { getPayload } from "../services/payload";
 import { AUTH_CONFIG } from "./config";
 
+/**
+ * User class for managing user-related operations in the authentication system.
+ * Provides methods for creating, updating, and finding users, as well as handling
+ * OTP (One-Time Password) verification and email functionality.
+ *
+ * @class User
+ * @property {UserType} data - The user data object from the payload collection
+ * @property {CollectionSlug} collection - The collection name for users
+ */
 export class User {
   collection: CollectionSlug = "users";
 

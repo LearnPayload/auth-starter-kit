@@ -6,7 +6,7 @@ import sharp from "sharp";
 import { fileURLToPath } from "url";
 
 import { Users } from "./config/collections/Users/Users";
-import { emailConfig } from "./authkit/config/email/config";
+import { emailConfig } from "./config/email/config";
 import { Media } from "./config/collections/Media";
 import { payloadStorage } from "./config/storage/s3";
 

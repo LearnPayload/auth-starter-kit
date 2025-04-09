@@ -1,4 +1,4 @@
-import { generateUserId } from "@/authkit/collections/users/generate-user-id";
+import { generateUserId } from "@/authkit/lib/generate-user-id";
 import { isAdmin } from "@/config/access/admin";
 import type { CollectionConfig } from "payload";
 import { oAuthCallbackEndpoint } from "./endpoints";
