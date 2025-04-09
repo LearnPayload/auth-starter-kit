@@ -13,7 +13,7 @@
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "typecheck": "cross-env NODE_OPTIONS=--no-deprecation tsc",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start --port 2222",
     "pretty": "prettier --write ."
   },
   "dependencies": {

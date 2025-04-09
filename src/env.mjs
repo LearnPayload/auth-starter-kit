@@ -3,7 +3,7 @@ import { z } from "zod";
 
 export const env = createEnv({
   client: {
-    NEXT_PUBLIC_VERCEL_URL: z.string().min(1),
+    VERCEL_URL: z.string().min(1),
   },
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
@@ -20,7 +20,7 @@ export const env = createEnv({
     MAIL_USERNAME: process.env.MAIL_USERNAME,
     MAIL_PASSWORD: process.env.MAIL_PASSWORD,
     RESEND_API_KEY: process.env.RESEND_API_KEY,
-    NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
+    VERCEL_URL: process.env.VERCEL_URL,
   },
   server: {
     DATABASE_URL: z.string().url(),

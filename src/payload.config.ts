@@ -5,10 +5,11 @@ import { buildConfig } from "payload";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
 
+import { Media } from "./config/collections/Media";
 import { Users } from "./config/collections/Users/Users";
 import { emailConfig } from "./config/email/config";
-import { Media } from "./config/collections/Media";
 import { payloadStorage } from "./config/storage/s3";
+import { env } from "./env.mjs";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -21,16 +22,16 @@ export default buildConfig({
     },
   },
   email: await emailConfig(),
-  serverURL: process.env.NEXT_PUBLIC_VERCEL_URL,
+  serverURL: env.VERCEL_URL,
   collections: [Users, Media],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || "",
+  secret: env.PAYLOAD_SECRET,
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || "",
+      connectionString: env.DATABASE_URL,
     },
   }),
   sharp,

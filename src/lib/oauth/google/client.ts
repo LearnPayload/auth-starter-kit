@@ -3,7 +3,7 @@ import { google } from "googleapis";
 import { unstable_cache } from "next/cache";
 import { randomBytes } from "node:crypto";
 
-export const googleCallbackUrl = `${env.NEXT_PUBLIC_VERCEL_URL}/api/users/auth/google/callback`;
+export const googleCallbackUrl = `${env.VERCEL_URL}/api/users/auth/google/callback`;
 
 export const googleState = unstable_cache(
   async () => randomBytes(16).toString("hex"),
