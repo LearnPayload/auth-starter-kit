@@ -23,7 +23,8 @@ export const env = createEnv({
     RESEND_API_KEY: process.env.RESEND_API_KEY,
     VERCEL_URL: process.env.VERCEL_URL,
     NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
-    NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
+    NEXT_PUBLIC_SERVER_URL: "https://" + process.env.NEXT_PUBLIC_VERCEL_URL,
+    VERCEL_PROJECT_PRODUCTION_URL: process.env.VERCEL_PROJECT_PRODUCTION_URL,
   },
   server: {
     VERCEL_URL: z.string().min(1),
@@ -41,11 +42,12 @@ export const env = createEnv({
     MAIL_USERNAME: z.string().optional(),
     MAIL_PASSWORD: z.string().optional(),
     RESEND_API_KEY: z.string(),
+    VERCEL_PROJECT_PRODUCTION_URL: z.string().min(1),
   },
 });
 
 console.log({
   VERCEL_URL: env.VERCEL_URL,
-  NEXT_PUBLIC_VERCEL_URL: env.NEXT_PUBLIC_VERCEL_URL,
   NEXT_PUBLIC_SERVER_URL: env.NEXT_PUBLIC_SERVER_URL,
+  VERCEL_PROJECT_PRODUCTION_URL: env.VERCEL_PROJECT_PRODUCTION_URL,
 });
