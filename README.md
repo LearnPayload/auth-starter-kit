@@ -77,21 +77,29 @@ docker-compose up
 
 ```
 src/
-├── app/              # Next.js app directory
-├── components/       # React components
-├── config/          # Payload CMS configuration
-├── lib/             # Utility functions and shared code
-└── types/           # TypeScript type definitions
+├── app/             # Next.js app directory
+├── authkit/         # All authkit related features/components
+├── components/      # General app components/radix-ui
+├── config/          # Payload CMS configuration (collections, fields, etc)
+└── lib/             # Utility functions and shared code
 ```
 
-## Authentication Features
+## Authentication Features (Roadmap)
 
-- User registration and login
-- One-time passwords:
-  - Password reset functionality
-  - Email verification
-- Social authentication (Google, Github)
-- Role-based access control (admin and user)
+- [x] User registration and login
+- [x] One-time passwords:
+  - [x] Password reset functionality
+  - [x] Email verification
+- [ ] Social authentication
+  - [x] Google
+  - [x] Github
+  - [ ] Facebook
+- [x] Role-based access control (admin and user)
+- [ ] User profile avatars
+  - [x] Default avatars on account create
+  - [ ] Change avatar in user settings profile page.
+- [ ] Two-factor authentication (Google Authenticator? Authy?)
+- [ ] Organizations (Tenants)
 
 ## Contributing
 
